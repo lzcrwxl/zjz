@@ -26,7 +26,7 @@ gulp.task('style', function() {
       browsers: ['last 2 versions']
     }))
     .pipe(cssnano())
-    .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest('F:/php/WWW/ruanrontrade/Public/Style/station/styles'))
     .pipe(reload({
       stream: true
     }));
@@ -36,7 +36,7 @@ gulp.task('style', function() {
 gulp.task('script', function() {
   gulp.src('src/scripts/*.js')
     //.pipe(uglify())
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest('F:/php/WWW/ruanrontrade/Public/Style/station/scripts'))
     .pipe(reload({
       stream: true
     }));
@@ -44,7 +44,7 @@ gulp.task('script', function() {
 //图片压缩
 gulp.task('image', function() {
   gulp.src('src/images/**')
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('F:/php/WWW/ruanrontrade/Public/Style/station/images'))
     .pipe(reload({
       stream: true
     }));
@@ -52,7 +52,7 @@ gulp.task('image', function() {
 
 gulp.task('json', function() {
     gulp.src('src/json/*.json')
-        .pipe(gulp.dest('dist/json'))
+        .pipe(gulp.dest('F:/php/WWW/ruanrontrade/Public/Style/station/json'))
         .pipe(reload({
             stream: true
         }));
@@ -69,7 +69,7 @@ gulp.task('html', function() {
     //  removeScriptTypeAttributes: true,
     //  removeStyleLinkTypeAttributes: true,
     //}))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('F:/php/WWW/ruanrontrade/Application/Home/View/Station'))
     .pipe(reload({
       stream: true
     }));
@@ -86,7 +86,7 @@ gulp.task('template', function() {
         //    removeScriptTypeAttributes: false,
         //    removeStyleLinkTypeAttributes: false
         //}))
-        .pipe(gulp.dest('dist/template'))
+        .pipe(gulp.dest('F:/php/WWW/ruanrontrade/Public/Style/station/template'))
         .pipe(reload({
             stream: true
         }));
@@ -97,7 +97,7 @@ gulp.task('serve', ['style', 'script', 'image', 'html','template','json'], funct
     notify: false,
     port: 2015,
     server: {
-      baseDir: ['dist']
+      baseDir: ['F:/php/WWW/ruanrontrade/Application/Home/View/Station']
     }
   });
 
