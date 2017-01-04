@@ -1,0 +1,74 @@
+.dad-noSelect,.dad-noSelect *{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: -webkit-grabbing !important;
+  cursor: -moz-grabbing !important;
+}
+
+.dad-container{
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.dad-container::after{
+  content: '';
+  clear: both !important;
+  display: block;
+}
+.dad-active .dad-draggable-area{
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+.dads-children-clone{
+  opacity: 0.8;
+  z-index: 9999;
+  pointer-events: none;
+}
+.dads-children-placeholder{
+  overflow: hidden;
+  position: absolute !important;
+  box-sizing: border-box;
+  border:4px dashed #639BF6;
+  margin:5px;
+  text-align: center;
+  color: #639BF6;
+  font-weight: bold;
+}
+//模块包裹
+.module{
+  position:relative;
+  .other{
+    position:absolute;
+    width:27px;
+    height:27px;
+    text-align: center;
+    line-height: 25px;
+    right: 0;
+    background: red;
+    color:#fff;
+    font-size: 22px;
+    cursor:pointer;
+  }
+  .module-del{
+    .other;
+    top:0px;
+  }
+  .module-up{
+    .other;
+    top:27px;
+    border-top:1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+  .module-down{
+    .other;
+    top:54px;
+  }
+}
