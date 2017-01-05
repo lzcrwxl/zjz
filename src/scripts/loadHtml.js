@@ -5,11 +5,10 @@ $(function(){
    $("#iframe").load(function(){
        $.ajax({
            type: "GET",
-           url: "http://abc.com/index.php/home/station/ajax_get_conf.html",
+           url: "/index.php/home/station/ajax_get_conf.html",
            dataType: "json",
            success:function(data){
                 if(data.code==0){
-
                 }else{
                     alert("请求失败");
                 }
