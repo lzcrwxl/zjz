@@ -1,6 +1,7 @@
 /**
  * Created by NHY on 2017/1/4.
  */
+
 $(function(){
    $("#iframe").load(function(){
        $.ajax({
@@ -9,8 +10,9 @@ $(function(){
            dataType: "json",
            success:function(data){
                 if(data.code==0){
+                    addModule(data);
                     barCode(data.data.wap);
-                    loadHeadColumn(data.data.column)
+                    loadHeadColumn(data.data.column);
                 }else{
                     alert("请求失败");
                 }
@@ -30,5 +32,20 @@ $(function(){
                html.push(new Header(data[i].text,data[i].url,data[i].icon,true,data[i].type,data[i].status));
            }
        }
+       function addModule(data){
+           var modules = data.data.modules;
+           var html="";
+           for(var i=0;i<modules.length;i++){
+               var innerHtml="";
+               var index="moduleID"+i;
+               for(var j=0;j<modules[i].list.length;j++){
+                   var ii=index;
+                   ii+=j;
+                   innerHtml+='<li id="'+ii+'"><img src="'+modules[i].list[j].icon+'" alt=""> <p>'+modules[i].list[j].text+'</p> </li>';
+               }
+               html+='<fieldset><legend>'+modules[i].text+'</legend><ul>'+innerHtml+'</ul></fieldset>';
+           }
+           $('[data-module]').html(html);
+       }
+   })
    });
-});
