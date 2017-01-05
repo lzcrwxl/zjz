@@ -22,6 +22,7 @@ Header.prototype={
         this.bindEvent();
         this.changeUpDown();
         if(!this.close){
+            this.close=true;
             this.dom.find(".column-item1").trigger("click");
         }
     },
@@ -48,7 +49,7 @@ Header.prototype={
             var ch=par.find(".column-item1");
             var index=$(this).parents('tr').attr('index');
             var iframe=$("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').clone(true);
-            if(that.open){
+            if(that.close){
                 ch.removeClass("column-select").addClass("column-select-active");
                 ch.parent().siblings().find(".column-item3").remove();
                 ch.parent().siblings().find(".column-item4").remove();
@@ -57,15 +58,17 @@ Header.prototype={
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
                 $("#iframe").contents().find(".template-head").append(iframe);
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').toggle();
-                that.open=false;
+                that.close=false;
             }else{
-                if(!that.open) {
+                if(!that.close) {
                     ch.removeClass("column-select-active").addClass("column-select");
                     ch.parent().siblings().find(".column-item2").after('<span class="column-up column-item3"></span><span class="column-down column-item4"></span>');
                     father.find(".column-select").last().parents("tr").after(par);
+                    $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
+                    $("#iframe").contents().find(".template-head").find('li:visible').last().after(iframe);
                     $(this).parents("tr").remove();
                 }
-                that.open=true;
+                that.close=true;
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').toggle();
             }
             //father.find(".column-select").last().parents("tr");
