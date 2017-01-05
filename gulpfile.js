@@ -86,7 +86,7 @@ gulp.task('template', function() {
         //    removeScriptTypeAttributes: false,
         //    removeStyleLinkTypeAttributes: false
         //}))
-        .pipe(gulp.dest('D:/phpStudy/WWW/ruanrontrade/Public/Style/station/template'))
+        .pipe(gulp.dest('D:/phpStudy/WWW/ruanrontrade/Application/Home/View/Station'))
         .pipe(reload({
             stream: true
         }));
