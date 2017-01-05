@@ -73,11 +73,11 @@ $(function(){
         });
         //初始化栏目
         var head=[];
-        head.push(new Header("首页",true,"../images/template1/head1.png",true,true));
-        head.push(new Header("会员登录",true,"../images/template1/head2.png",false,false));
-        head.push(new Header("留言板",true,"../images/template1/head3.png",false,false));
-        head.push(new Header("会员注册",true,"../images/template1/head4.png",false,false));
-        head.push(new Header("会员中心",true,"../images/template1/head5.png",false,false));
+        head.push(new Header("首页","www.baidu.com","../../../../Public/Style/station/images/template1/head1.png",true,true,true));
+        head.push(new Header("会员登录","www.sina.com","../../../../Public/Style/station/images/template1/head2.png",false,false,false));
+        head.push(new Header("留言板",true,"../../../../Public/Style/station/images/template1/head3.png",false,false,false));
+        head.push(new Header("会员注册",true,"../../../../Public/Style/station/images/template1/head4.png",false,false,true));
+        head.push(new Header("会员中心",true,"../../../../Public/Style/station/images/template1/head5.png",false,false,true));
         head[0].title="尾页";
         //新增栏目
         (function(){

@@ -1,12 +1,13 @@
 /**
  * Created by NHY on 2016/11/19.
  */
-function Header(title,url,icon,power,system){
+function Header(title,url,icon,power,system,open){
     this.title=title;
     this.url=url;
     this.icon=icon;
     this.power=power;
     this.open=true;
+    this.close=open;
     this.system=system||false;
     this.htmlHeader=new HtmlHeader(this.title,this.icon,this.url,this.power);
     this.dom=$("<tr index='"+this.htmlHeader.index+"'></tr>");
@@ -20,6 +21,9 @@ Header.prototype={
         this.bindDom();
         this.bindEvent();
         this.changeUpDown();
+        if(!this.close){
+            this.dom.find(".column-item1").trigger("click");
+        }
     },
     //绑定节点
     bindDom:function(){
