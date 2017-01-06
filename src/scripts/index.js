@@ -46,7 +46,7 @@ $(function(){
             $(this).addClass("list-active").siblings().removeClass("list-active");
         });
         //显示二维码
-        $("#barcode").hover(function(){
+        $("#barcode").togglefn(function(){
             var that=this;
             $.ajax({
                 type: "GET",

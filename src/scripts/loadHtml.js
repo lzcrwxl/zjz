@@ -24,7 +24,7 @@ $(function(){
        //加载二维码
        function barCode(data){
            var p=$("#content-middle-top");
-           p.find("p").html(data.url);
+           p.find("input").val(data.url);
        }
        function loadHeadColumn(data){
            var html=[];
