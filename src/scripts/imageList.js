@@ -71,7 +71,7 @@ $(function(){
     var listImageIndex=0;
     //new ListImage("去哪啊",'',2);
     //new ListImage("来这儿",'',1);
-    $("#imageList").click(function(){
+    $(".content-left-list").on("click","#moduleID02",function(){
         var html=template("arttemplate");
         $("#bg").show();
         $("body").append(html);

@@ -86,7 +86,7 @@ $(function(){
             }
         };
         var listPlayIndex=0;
-        $("#imagePlay").click(function(){
+        $(".content-left-list").on("click","#moduleID05",function(){
             var html=template("imageplaytemplate");
             $("#bg").show();
             $("body").append(html);

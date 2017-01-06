@@ -283,7 +283,7 @@ $(function(){
     });
     //图文展示模块的添加
     (function(){
-        $("#imageTextClick").click(function(){
+        $(".content-left-list").on("click","#moduleID01",function(){
                 $("#imageText,#imageTextBg").show();
             }
         );
@@ -318,85 +318,85 @@ $(function(){
             $("#imageText,#imageTextBg").hide();
         });
     })();
-    //图文展示拖拽
-    //(function(){
-    //    $("#iframe").load(function() {
-    //        var imgText = {
-    //            // 初始化
-    //            init: function () {
-    //                var me = this;
-    //                me.imageText = document.querySelector('#imageTextClick');
-    //                me.imageList=$("#imageList")[0];
-    //                me.imagePlay=$("#imagePlay")[0];
-    //                me.panelList = $("#iframe").contents().find('body')[0];
-    //
-    //                // 为图文展示拖拽源监听dragstart,设置关联数据
-    //                me.imageText.addEventListener('dragstart', function(e){
-    //                    e.dataTransfer.setData('text/plain', 'imageText');
-    //                }, false);
-    //                //为图文列表拖拽源监听dragstart,设置关联数据
-    //                me.imageList.addEventListener('dragstart', function(e){
-    //                    e.dataTransfer.setData('text/plain', 'imageList');
-    //                }, false);
-    //                //为图文列表拖拽源监听dragstart,设置关联数据
-    //                me.imagePlay.addEventListener('dragstart', function(e){
-    //                    e.dataTransfer.setData('text/plain', 'imagePlay');
-    //                }, false);
-    //
-    //
-    //
-    //                // 拖拽鼠标移入元素,在拖放目标上设置视觉反馈
-    //                me.panelList.addEventListener('dragenter', me.onDragEnter, false);
-    //
-    //                // 取消元素dragover默认行为,使其可拖放
-    //                me.panelList.addEventListener('dragover', me.onDragOver, false);
-    //
-    //                // 拖拽移出元素,清除视觉反馈
-    //                me.panelList.addEventListener('dragleave', me.onDragLeave, false);
-    //
-    //                // 鼠标释放,在拖放目标上接收数据并处理
-    //                me.panelList.addEventListener('drop', me.onDrop, false);
-    //            },
-    //            onDragEnter: function (e) {
-    //                e.preventDefault();
-    //                e.stopPropagation();
-    //            },
-    //            onMouseUp: function (e) {
-    //                e.preventDefault();
-    //            },
-    //            onDragLeave: function (e) {
-    //                e.stopPropagation();
-    //            },
-    //            onDragOver: function (e) {
-    //                e.preventDefault();
-    //                e.stopPropagation();
-    //            },
-    //            onDrop: function (e) {
-    //                var id = e.dataTransfer.getData('text/plain');
-    //                switch (id){
-    //                    case "imageText":
-    //                        $("#imageTextClick").click();
-    //                        break;
-    //                    case "imageList":
-    //                        $("#imageList").click();
-    //                        break;
-    //                    case "imagePlay":
-    //                        $("#imagePlay").click();
-    //                        break;
-    //                    default:break;
-    //                }
-    //
-    //                e.preventDefault();
-    //                e.stopPropagation();
-    //            }
-    //
-    //        };
-    //
-    //        imgText.init();
-    //        document.body.addEventListener("drop", function (e) {
-    //            e.preventDefault();
-    //            e.stopPropagation();
-    //        }, false);
-    //    });
-    //})();
+    图文展示拖拽
+    (function(){
+        $("#iframe").load(function() {
+            var imgText = {
+                // 初始化
+                init: function () {
+                    var me = this;
+                    me.imageText = document.querySelector('#imageTextClick');
+                    me.imageList=$("#imageList")[0];
+                    me.imagePlay=$("#imagePlay")[0];
+                    me.panelList = $("#iframe").contents().find('body')[0];
+
+                    // 为图文展示拖拽源监听dragstart,设置关联数据
+                    me.imageText.addEventListener('dragstart', function(e){
+                        e.dataTransfer.setData('text/plain', 'imageText');
+                    }, false);
+                    //为图文列表拖拽源监听dragstart,设置关联数据
+                    me.imageList.addEventListener('dragstart', function(e){
+                        e.dataTransfer.setData('text/plain', 'imageList');
+                    }, false);
+                    //为图文列表拖拽源监听dragstart,设置关联数据
+                    me.imagePlay.addEventListener('dragstart', function(e){
+                        e.dataTransfer.setData('text/plain', 'imagePlay');
+                    }, false);
+
+
+
+                    // 拖拽鼠标移入元素,在拖放目标上设置视觉反馈
+                    me.panelList.addEventListener('dragenter', me.onDragEnter, false);
+
+                    // 取消元素dragover默认行为,使其可拖放
+                    me.panelList.addEventListener('dragover', me.onDragOver, false);
+
+                    // 拖拽移出元素,清除视觉反馈
+                    me.panelList.addEventListener('dragleave', me.onDragLeave, false);
+
+                    // 鼠标释放,在拖放目标上接收数据并处理
+                    me.panelList.addEventListener('drop', me.onDrop, false);
+                },
+                onDragEnter: function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                },
+                onMouseUp: function (e) {
+                    e.preventDefault();
+                },
+                onDragLeave: function (e) {
+                    e.stopPropagation();
+                },
+                onDragOver: function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                },
+                onDrop: function (e) {
+                    var id = e.dataTransfer.getData('text/plain');
+                    switch (id){
+                        case "imageText":
+                            $("#imageTextClick").click();
+                            break;
+                        case "imageList":
+                            $("#imageList").click();
+                            break;
+                        case "imagePlay":
+                            $("#imagePlay").click();
+                            break;
+                        default:break;
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+            };
+
+            imgText.init();
+            document.body.addEventListener("drop", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+    })();
 });
