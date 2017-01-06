@@ -318,31 +318,38 @@ $(function(){
             $("#imageText,#imageTextBg").hide();
         });
     })();
-    图文展示拖拽
+    //图文展示拖拽
     (function(){
         $("#iframe").load(function() {
             var imgText = {
                 // 初始化
                 init: function () {
                     var me = this;
-                    me.imageText = document.querySelector('#imageTextClick');
-                    me.imageList=$("#imageList")[0];
-                    me.imagePlay=$("#imagePlay")[0];
+                    me.parent=$(".content-left-list");
+                    me.imageText ="#moduleID01";
+                    me.imageList="#moduleID02";
+                    me.imagePlay="#moduleID05";
                     me.panelList = $("#iframe").contents().find('body')[0];
 
-                    // 为图文展示拖拽源监听dragstart,设置关联数据
-                    me.imageText.addEventListener('dragstart', function(e){
-                        e.dataTransfer.setData('text/plain', 'imageText');
-                    }, false);
-                    //为图文列表拖拽源监听dragstart,设置关联数据
-                    me.imageList.addEventListener('dragstart', function(e){
-                        e.dataTransfer.setData('text/plain', 'imageList');
-                    }, false);
-                    //为图文列表拖拽源监听dragstart,设置关联数据
-                    me.imagePlay.addEventListener('dragstart', function(e){
-                        e.dataTransfer.setData('text/plain', 'imagePlay');
-                    }, false);
 
+                    // 为图文展示拖拽源监听dragstart,设置关联数据
+                    me.parent.on("dragstart",me.imageText,function(e){
+                        var event=e.originalEvent;
+                        event.dataTransfer.setData('text/plain', 'imageText');
+                        event.stopPropagation();
+                    });
+                    //为图文列表拖拽源监听dragstart,设置关联数据
+                    me.parent.on("dragstart",me.imageList,function(e){
+                        var event=e.originalEvent;
+                        event.dataTransfer.setData('text/plain', 'imageList');
+                        event.stopPropagation();
+                    });
+                    //为图文列表拖拽源监听dragstart,设置关联数据
+                    me.parent.on("dragstart",me.imagePlay,function(e){
+                        var event=e.originalEvent;
+                        event.dataTransfer.setData('text/plain', 'imagePlay');
+                        event.stopPropagation();
+                    });
 
 
                     // 拖拽鼠标移入元素,在拖放目标上设置视觉反馈
@@ -375,13 +382,13 @@ $(function(){
                     var id = e.dataTransfer.getData('text/plain');
                     switch (id){
                         case "imageText":
-                            $("#imageTextClick").click();
+                            $("#moduleID01").click();
                             break;
                         case "imageList":
-                            $("#imageList").click();
+                            $("#moduleID02").click();
                             break;
                         case "imagePlay":
-                            $("#imagePlay").click();
+                            $("#moduleID05").click();
                             break;
                         default:break;
                     }
