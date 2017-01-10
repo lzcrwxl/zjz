@@ -11,7 +11,7 @@ $(function(){
             this.duration=500;
             this.text=text;
             this.id=Date.now();
-            this.html=$('<div class="module imagePlay'+this.id+'"></div>');
+            this.html=$('<div class="module imagePlay'+this.id+'" index='+this.id+'></div>');
             this.init();
         }
         ImagePlay.prototype={
