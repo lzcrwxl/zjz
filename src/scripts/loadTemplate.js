@@ -27,7 +27,7 @@ $(function(){
             if(data.module_id==1){
 
             }else if(data.module_id==2){
-
+                module_id2(data).bindTemplate();
             }else if(data.module_id==3){
 
             }else if(data.module_id==4){

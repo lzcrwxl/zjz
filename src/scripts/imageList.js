@@ -69,8 +69,6 @@ $(function(){
     };
 
     var listImageIndex=0;
-    //new ListImage("去哪啊",'',2);
-    //new ListImage("来这儿",'',1);
     $(".content-left-list").on("click","#moduleID02",function(){
         var html=template("arttemplate");
         $("#bg").show();
@@ -133,65 +131,6 @@ $(function(){
     $("body").on("click",".list-image-add",function(){
         var title=$(".list-image-title").find("input").val();
         var type=$(".list-image-active.active").attr("index");
-        //$.ajaxFileUpload({
-        //    url: "www.baidu.com",
-        //    type: 'post',
-        //    data:getImages().imageUrl,
-        //    secureuri: false,
-        //    fileElementId: getImages().fileUrl,
-        //    dataType: 'json',
-        //    success: function (data) {
-        //        console.log(123);
-        //        var images=[
-        //            {
-        //                image:"../images/right1.jpg",
-        //                url:"www.baidu.com"
-        //            },
-        //            {
-        //                image:"../images/right1.jpg",
-        //                url:"www.baidu.com"
-        //            },
-        //            {
-        //                image:"../images/right1.jpg",
-        //                url:"www.baidu.com"
-        //            },
-        //            {
-        //                image:"../images/right1.jpg",
-        //                url:"www.baidu.com"
-        //            },
-        //            {
-        //                image:"../images/right1.jpg",
-        //                url:"www.baidu.com"
-        //            }
-        //        ];
-        //        new ListImage(title,images,type);
-        //        $("#bg").hide();
-        //        $("#head-column-list-image").remove();
-        //    },
-        //    error: function (data) {
-        //        alert("上传失败");
-        //    }
-        //});
-        //
-        //function getImages(){
-        //    var fileUrl=[];
-        //    var imageUrl={};
-        //    var lis=$(".list-image-images").find("li");
-        //    if(lis.length>1){
-        //        for(var i=0;i<lis.length-1;i++){
-        //            var id=$(lis[i]).find("input").attr("id");
-        //            imageUrl[id]=$(lis[i]).attr("data-href");
-        //            fileUrl.push(id);
-        //        }
-        //    }
-        //    return {
-        //        fileUrl:fileUrl,
-        //        imageUrl:imageUrl
-        //    };
-        //}
-
-
-
 
         function getImage(){
             var buf=[];
@@ -209,9 +148,6 @@ $(function(){
         new ListImage(title,getImage(),type);
         $("#bg").hide();
         $("#head-column-list-image").remove();
-
-
-
 
         listImageIndex=0;
     });
