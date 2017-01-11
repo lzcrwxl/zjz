@@ -29,7 +29,7 @@ $(function(){
             }else if(data.module_id==2){
                 module_id2(data).bindTemplate();
             }else if(data.module_id==3){
-
+                module_id3(data).bindTemplate();
             }else if(data.module_id==4){
                 module_id4(data).bindTemplate();
             }
