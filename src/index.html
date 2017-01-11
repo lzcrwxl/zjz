@@ -369,95 +369,6 @@
     </div>
     <div class="head-column-btn"><span id="linkSure">确定</span><span class="closelink">取消</span></div>
   </div>
-  <!--图文展示模块的添加-->
-  <div id="imageTextBg" style="display: none;"></div>
-  <div id="imageText" style="display: none;">
-    <div class="head-column-set-head">
-      <span>添加图文展示模块</span><span class="imageTextClose">×</span>
-    </div>
-    <div class="imageText-nav">
-      <span class="imageText-active column-add-common">常规</span>
-    </div>
-    <div style="clear: both;"></div>
-    <div style="margin-top:15px;">
-      <label for="imageTextNav">模板标题：</label>
-      <input type="text" id="imageTextNav" class="ml15">
-    </div>
-    <div class="df aic" id="imageTextStyle">
-      <label for="">模板样式：</label>
-      <ul class="df">
-        <li class="active" index="1">
-          <img src="../../../../Public/Style/station/images/imagetext1.jpg" alt="">
-          <div class="imageTextChecked"></div>
-        </li>
-        <li index="2">
-          <img src="../../../../Public/Style/station/images/imagetext2.jpg" alt="">
-          <div class="imageTextChecked"></div>
-        </li>
-        <li index="3">
-          <img src="../../../../Public/Style/station/images/imagetext3.jpg" alt="">
-          <div class="imageTextChecked"></div>
-        </li>
-        <li index="4">
-          <img src="../../../../Public/Style/station/images/imagetext4.jpg" alt="">
-          <div class="imageTextChecked"></div>
-        </li>
-      </ul>
-    </div>
-    <div class="mt15"><label for="" class="mt30">模块内容：</label></div>
-    <div class="imageTextModule1 p15 imageTextModule">
-      <input type="text" id="imageTextText1">
-    </div>
-    <div class="imageTextModule2 df aic p5 imageTextModule" style="display: none;">
-      <div>
-        <div class="df">
-          <label for="">图片文件：</label>
-          <div class="imgTextFile"><button>添加图片</button><input type="file" name="imgOne" id="imgTextFile2" onchange="preImg(this.id,'imgPre2');" /></div>
-        </div>
-        <div>
-          <label for="">设置链接：</label>
-          <input type="text" id="imageTextUrl2" value="http://">
-        </div>
-        <div class="ml15">
-          <img src="../../../../Public/Style/station/images/exampleImage.png" alt=""  id="imgPre2" width="200px" height="200px">
-        </div>
-      </div>
-      <div class="ml15"><textarea name="" id="imageTextText2" cols="30" rows="10"></textarea></div>
-    </div>
-    <div class="imageTextModule3 df aic p5 imageTextModule" style="display: none;">
-      <div>
-        <div class="df">
-          <label for="">图片文件：</label>
-          <div class="imgTextFile"><button>添加图片</button><input type="file" name="imgOne" id="imgTextFile3" onchange="preImg(this.id,'imgPre3');" /></div>
-        </div>
-        <div>
-          <label for="">设置链接：</label>
-          <input type="text" id="imageTextUrl3" value="http://">
-        </div>
-        <div class="ml15">
-          <img src="../../../../Public/Style/station/images/exampleImage.png" alt=""  id="imgPre3" width="200px" height="200px">
-        </div>
-      </div>
-      <div class="ml15"><textarea name="" id="imageTextText3" cols="30" rows="10"></textarea></div>
-    </div>
-    <div class="imageTextModule4 df aic p5 imageTextModule" style="display: none;">
-      <div>
-        <div class="df">
-          <label for="">图片文件：</label>
-          <div class="imgTextFile"><button>添加图片</button><input type="file" name="imgOne" id="imgTextFile4" onchange="preImg(this.id,'imgPre4');" /></div>
-        </div>
-        <div>
-          <label for="">设置链接：</label>
-          <input type="text" id="imageTextUrl4" value="http://">
-        </div>
-        <div class="ml15">
-          <img src="../../../../Public/Style/station/images/exampleImage.png" alt=""  id="imgPre4" width="200px" height="200px">
-        </div>
-      </div>
-      <div class="ml15"><textarea name="" id="imageTextText4" cols="30" rows="10"></textarea></div>
-    </div>
-    <div class="head-column-btn"><span id="imageTextSave">确定</span><span class="imageTextClose">取消</span></div>
-  </div>
   <!--编辑头部-->
   <div id="head-column1" style="display: none;">
     <div class="head-column-head1"><span>新增栏目</span><span class="column-cancel1">×</span></div>
@@ -575,6 +486,97 @@
     <div class="head-column-btn"><span id="linkSure1">确定</span><span class="closelink1">取消</span></div>
   </div>
 
+
+  <!--图文展示模块-->
+  <script id="imagetexttemplate" type="text/html">
+  <div id="imageText">
+    <div class="head-column-set-head">
+      <span>添加图文展示模块</span><span class="imageTextClose">×</span>
+    </div>
+    <div class="imageText-nav">
+      <span class="imageText-active column-add-common">常规</span>
+    </div>
+    <div style="clear: both;"></div>
+    <div style="margin-top:15px;">
+      <label for="imageTextNav">模板标题：</label>
+      <input type="text" id="imageTextNav" class="ml15" value="图文展示">
+    </div>
+    <div class="df aic" id="imageTextStyle">
+      <label for="">模板样式：</label>
+      <ul class="df">
+        <li class="active" index="1">
+          <img src="../../../../Public/Style/station/images/imagetext1.jpg" alt="">
+          <div class="imageTextChecked"></div>
+        </li>
+        <li index="2">
+          <img src="../../../../Public/Style/station/images/imagetext2.jpg" alt="">
+          <div class="imageTextChecked"></div>
+        </li>
+        <li index="3">
+          <img src="../../../../Public/Style/station/images/imagetext3.jpg" alt="">
+          <div class="imageTextChecked"></div>
+        </li>
+        <li index="4">
+          <img src="../../../../Public/Style/station/images/imagetext4.jpg" alt="">
+          <div class="imageTextChecked"></div>
+        </li>
+      </ul>
+    </div>
+    <div class="mt15"><label for="" class="mt30">模块内容：</label></div>
+    <div class="imageTextModule1 p15 imageTextModule">
+      <input type="text" id="imageTextText1">
+    </div>
+    <div class="imageTextModule2 df aic p5 imageTextModule" style="display: none;">
+      <div>
+        <div class="df">
+          <label for="">图片文件：</label>
+          <div class="imgTextFile"><button>添加图片</button><input type="file" name="imgTextFile2" id="imgTextFile2" onchange="preImg(this.id,'imgPre2');" /></div>
+        </div>
+        <div>
+          <label for="">设置链接：</label>
+          <input type="text" id="imageTextUrl2" >
+        </div>
+        <div class="ml15">
+          <img src="../../../../Public/Style/station/images/exampleImage.png" alt=""  id="imgPre2" width="200px" height="200px">
+        </div>
+      </div>
+      <div class="ml15"><textarea name="" id="imageTextText2" cols="30" rows="10"></textarea></div>
+    </div>
+    <div class="imageTextModule3 df aic p5 imageTextModule" style="display: none;">
+      <div>
+        <div class="df">
+          <label for="">图片文件：</label>
+          <div class="imgTextFile"><button>添加图片</button><input type="file" name="imgTextFile3" id="imgTextFile3" onchange="preImg(this.id,'imgPre3');" /></div>
+        </div>
+        <div>
+          <label for="">设置链接：</label>
+          <input type="text" id="imageTextUrl3" >
+        </div>
+        <div class="ml15">
+          <img src="../../../../Public/Style/station/images/exampleImage.png" alt=""  id="imgPre3" width="200px" height="200px">
+        </div>
+      </div>
+      <div class="ml15"><textarea name="" id="imageTextText3" cols="30" rows="10"></textarea></div>
+    </div>
+    <div class="imageTextModule4 df aic p5 imageTextModule" style="display: none;">
+      <div>
+        <div class="df">
+          <label for="">图片文件：</label>
+          <div class="imgTextFile"><button>添加图片</button><input type="file" name="imgTextFile4" id="imgTextFile4" onchange="preImg(this.id,'imgPre4');" /></div>
+        </div>
+        <div>
+          <label for="">设置链接：</label>
+          <input type="text" id="imageTextUrl4" >
+        </div>
+        <div class="ml15">
+          <img src="../../../../Public/Style/station/images/exampleImage.png" alt=""  id="imgPre4" width="200px" height="200px">
+        </div>
+      </div>
+      <div class="ml15"><textarea name="" id="imageTextText4" cols="30" rows="10"></textarea></div>
+    </div>
+    <div class="head-column-btn"><span id="imageTextSave">确定</span><span class="imageTextClose">取消</span></div>
+  </div>
+  </script>
   <!--图片列表模板-->
   <script id="arttemplate" type="text/html">
     <div id="head-column-list-image" >

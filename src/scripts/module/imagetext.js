@@ -32,7 +32,7 @@
         },
         bindStyle:function(id){
             var str='';
-            switch(id){
+            switch(parseInt(id)){
                 case 1:str+='<style>'+
                 '.imageText {background: #fff;}'+
                 '.imageText.module1[index='+this.id+'] > div:nth-of-type(2) img {display: none;}'+
@@ -52,8 +52,8 @@
                     break;
                 case 4:str+='<style>'+
                 '.imageText.module4[index='+this.id+'] > div:after {clear: both;content: ".";height: 0;line-height: 0;visibility: hidden;display: block;}'+
-                '.imageText.module4[index='+this.id+'] > div:last-child img {width: 50%;float: right;}'+
-                '.imageText.module4[index='+this.id+'] > div:last-child p {width:50%;font-size: 14px;color: #333;padding: 15px;float: left;box-sizing: border-box;}'+
+                '.imageText.module4[index='+this.id+'] > div:nth-of-type(2) img {width: 50%;float: right;}'+
+                '.imageText.module4[index='+this.id+'] > div:nth-of-type(2) p {font-size: 14px;color: #333;padding: 15px;float: left;}'+
                 '</style>';
                     break;
                 default:
@@ -72,21 +72,23 @@
 (function(){
     $("#iframe").load(function() {
         $(".content-left-list").on("click", "#moduleID01", function () {
-                $("#imageText,#imageTextBg").show();
-            }
-        );
-        $(".imageTextClose").click(function () {
-            $("#imageText,#imageTextBg").hide();
+            var html=template('imagetexttemplate');
+            $("body").append(html);
+            $("#bg").show();
+        });
+        $("body").on("click",".imageTextClose",function(){
+            $("#imageText").remove();
+            $("#bg").hide();
         });
         //模块内容选择
-        $("#imageTextStyle li").click(function () {
+        $("body").on('click','#imageTextStyle li',function(){
             $(this).addClass("active").siblings().removeClass("active");
             var index = $(this).attr('index');
             $(".imageTextModule").hide();
             var showModule = ".imageTextModule" + index;
             $(showModule).show();
         });
-        $("#imageTextSave").click(function () {
+        $("body").on("click",'#imageTextSave',function(){
             var index = 0;
             $("#imageTextStyle").find('li').each(function () {
                 if ($(this).hasClass("active")) index = $(this).attr('index');
@@ -94,22 +96,51 @@
             var title = $('#imageTextNav').val();
             var text = $("#imageTextText" + index).val();
             var url = $("#imageTextUrl" + index).val();
-            var img;
+            var id="imgTextFile"+index;
+
             if ($("#imgTextFile" + index).length) {
-                img = getFileUrl("imgTextFile" + index);
+                $.ajaxFileUpload({
+                    url: "/index.php/Home/Station/ajax_upload_images",
+                    type: 'post',
+                    data: {'file_name': id},
+                    secureuri: false,
+                    fileElementId: id,
+                    dataType: 'json',
+                    success: function (d) {
+                        var data={};
+                        data.title=title;
+                        data.src= d.data.src;
+                        data.intro=text;
+                        data.template_id=index;
+                        data.url=url;
+                        module_id4(data).bindTemplate();
+                        $('#imageTextNav').val("");
+                        $("#imageTextText" + index).val("");
+                        $("#imageTextUrl" + index).val("http://");
+                        $("#imgPre" + index).attr('src', 'images/exampleImage.png');
+                        $("#imageText").remove();
+                        $("#bg").hide();
+                    },
+                    error: function (data) {
+                        alert('上传失败'+ data);
+                    }
+                });
+            }else{
+                var data={};
+                data.title=title;
+                data.src= null;
+                data.intro=text;
+                data.template_id=index;
+                data.url=url;
+                module_id4(data).bindTemplate();
+                $('#imageTextNav').val("");
+                $("#imageTextText" + index).val("");
+                $("#imageTextUrl" + index).val("http://");
+                $("#imgPre" + index).attr('src', 'images/exampleImage.png');
+                $("#imageText").remove();
+                $("#bg").hide();
             }
-            var data={};
-            data.title=title;
-            data.src=img;
-            data.intro=text;
-            data.template_id=index;
-            data.url=url;
-            module_id1(data).bindTemplate();
-            $('#imageTextNav').val("");
-            $("#imageTextText" + index).val("");
-            $("#imageTextUrl" + index).val("http://");
-            $("#imgPre" + index).attr('src', 'images/exampleImage.png');
-            $("#imageText,#imageTextBg").hide();
+
         });
     });
 })();

@@ -9,24 +9,6 @@
         this.type = this.bindStyle(data.template_id);
         this.scripts=this.bindEvent(data.template_id);
         this.html = $("<div class='module imageList dads-children module" +data.template_id+"' index='" + this.id + "'></div>");
-        //this.script1 = '$(".imageList[index=\'' + this.id + '\'] .imageListContent").width(130*$(".imageList[index=\'' + this.id + '\'] .imageListContent").find("li").length+10); ';
-        //this.script2 = 'if($(".imageList[index=\'' + this.id + '\'] .imageListPage").length){' +
-        //    '$(".imageList[index=\'' + this.id + '\'] .imageListPage").jqPaginator({' +
-        //    'totalPages: Math.ceil($(".imageList[index=\'' + this.id + '\'] .imageListContent").find("li").length/4),' +
-        //    'visiblePages: 1,' +
-        //    'currentPage: 1,' +
-        //    'prev: "<li class=\'prev\'>上一页<\/li>",' +
-        //    'next: "<li class=\'next\'>下一页<\/li>",' +
-        //    'page: "<li class=\'page\'> {{page}} / {{totalPages}} <\/li>",' +
-        //    'onPageChange: function (n) {' +
-        //    '$(".imageList[index=\'' + this.id + '\'] .imageListContent").find("li").hide();' +
-        //    'for(var i=1;i<=4;i++){' +
-        //    '$(".imageList[index=\'' + this.id + '\'] .imageListContent").find("li").eq(4*n-i).show();' +
-        //    '}' +
-        //    '}' +
-        //    '});' +
-        //    '}';
-
     }
 
     ListImage.prototype = {
@@ -60,7 +42,7 @@
         },
         bindStyle:function(type){
             var str="<style>";
-            switch (type){
+            switch (parseInt(type)){
                 case 1:str+='.imageList.module1[index='+this.id+'] {background: #fff;padding-bottom: 5px;}'+
                 '.imageList.module1[index='+this.id+'] .imageListContent {padding: 1px 8px 8px 10px;width: 100%;height: 230px;box-sizing: border-box;}'+
                 '.imageList.module1[index='+this.id+'] .imageListContent:after {display: block;content: "clear";height: 0;clear: both;overflow: hidden;visibility: hidden;}'+
@@ -94,7 +76,7 @@
         },
         bindEvent:function(type){
             var str="";
-            switch(type){
+            switch(parseInt(type)){
                 case 1:str+='if($(".imageList[index=\'' + this.id + '\'] .imageListPage").length){' +
                     '$(".imageList[index=\'' + this.id + '\'] .imageListPage").jqPaginator({' +
                     'totalPages: Math.ceil($(".imageList[index=\'' + this.id + '\'] .imageListContent").find("li").length/4),' +
@@ -134,7 +116,7 @@
     };
 })(window);
 $(function(){
-    var listImageIndex=0;
+    //var listImageIndex=0;
     $(".content-left-list").on("click","#moduleID02",function(){
         var html=template("arttemplate");
         $("#bg").show();
@@ -162,32 +144,51 @@ $(function(){
     $("body").on("click",'.column-cancel-list-image',function(){
         $("#bg").hide();
         $("#head-column-list-image").remove();
-        listImageIndex=0;
+        //listImageIndex=0;
     });
     $("body").on("change","#list-image-image",function(){
         var url=getUrl($(this)[0].files[0]);
         $(".list-image-image-select").css("backgroundImage","url("+url+")");
     });
     $("body").on("click",".list-image-pop-add",function(){
-        var url=getUrl($("#list-image-image")[0].files[0]);
-        var file=$("#list-image-image");
-        //var nameId="listimage"+listImageIndex;
-        file.attr({"id":"listimage"+listImageIndex,"name":"listimage"+listImageIndex});
-        file.css("display",'none');
-        var href=$("#list-image-link").val();
-        var str=$('<li class="list-image-added" data-href="'+href+'"><img src="'+url+'" alt=""></li>');
-        str.append(file);
-        $(".list-image-select").before(str);
-        $(".list-image-count span").html($(".list-image-images").find("li").length-1);
-        $(".list-image-pop").remove();
-        $("#bg1").hide();
-        listImageIndex++;
+        //var url=getUrl($("#list-image-image")[0].files[0]);
+        //var file=$("#list-image-image");
+        //file.attr({"id":"listimage"+listImageIndex,"name":"listimage"+listImageIndex});
+        //file.css("display",'none');
+        //var href=$("#list-image-link").val();
+        //var str=$('<li class="list-image-added" data-href="'+href+'"><img src="'+url+'" alt=""></li>');
+        //str.append(file);
+        //$(".list-image-select").before(str);
+        //$(".list-image-count span").html($(".list-image-images").find("li").length-1);
+        //$(".list-image-pop").remove();
+        //$("#bg1").hide();
+        //listImageIndex++;
+        $.ajaxFileUpload({
+            url: "/index.php/Home/Station/ajax_upload_images",
+            type: 'post',
+            data: {'file_name': 'list-image-image'},
+            secureuri: false,
+            fileElementId: 'list-image-image',
+            dataType: 'json',
+            success: function (data) {
+                var url=data.data.src;
+                var href=$("#list-image-link").val();
+                var str=$('<li class="list-image-added" data-href="'+href+'"><img src="'+url+'" alt=""></li>');
+                $(".list-image-select").before(str);
+                $(".list-image-count span").html($(".list-image-images").find("li").length-1);
+                $(".list-image-pop").remove();
+                $("#bg1").hide();
+            },
+            error: function (data) {
+                alert('上传失败'+ data);
+            }
+        });
     });
     $("body").on("click",'.list-image-select',function(){
         $("#bg1").show();
         var str='<div class="list-image-pop">';
         str+='<div class="head-column-head"><span>选择图片</span><span class="list-image-pop-cancel">×</span></div>';
-        str+='<div class="list-image-image-select"><input type="file" id="list-image-image"></div>';
+        str+='<div class="list-image-image-select"><input type="file" id="list-image-image" name="list-image-image"></div>';
         str+='<div class="list-image-set-link"><label for="">链接地址：</label><input type="text" id="list-image-link" style="ime-mode:disabled"></div>';
         str+='<div class="list-image-btn"><span class="list-image-pop-add">确定</span><span class="list-image-pop-cancel">取消</span></div>';
         str+='</div>';
@@ -195,8 +196,9 @@ $(function(){
     });
     //上传显示图片
     $("body").on("click",".list-image-add",function(){
-        var title=$(".list-image-title").find("input").val();
-        var type=$(".list-image-active.active").attr("index");
+        var data={};
+        data.title=$(".list-image-title").find("input").val();
+        data.template_id=$(".list-image-active.active").attr("index");
 
         function getImage(){
             var buf=[];
@@ -204,18 +206,19 @@ $(function(){
             if(lis.length>1){
                 for(var i=0;i<lis.length-1;i++){
                     var obj={};
-                    obj['image']=getUrlImages($(lis[i]).find("input")[0]);
+                    obj['src']=$(lis[i]).find("img").attr('src');
                     obj['url']=$(lis[i]).attr("data-href");
                     buf.push(obj);
                 }
             }
             return buf;
         }
-        new ListImage(title,getImage(),type);
+        data.list=getImage();
+        console.log(data);
+        module_id2(data).bindTemplate();
         $("#bg").hide();
         $("#head-column-list-image").remove();
 
-        listImageIndex=0;
     });
 
 });
