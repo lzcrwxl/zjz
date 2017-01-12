@@ -3,6 +3,10 @@
  */
 (function(w){
     function ImageText(data){
+        this.moduleObj={
+            img:'/Public/Style/station/images/left12.jpg',
+            name:'图文展示'
+        };
         this.id=Date.now();
         this.title=data.title||"图文展示";
         this.img=data.src;
@@ -16,6 +20,7 @@
         bindTemplate:function(){
             this.bindDom();
             this.bindEvent();
+            this.bindLoaded();
         },
         bindDom:function(){
             var str='<div class="module-top">'+
@@ -61,7 +66,11 @@
             }
             return str;
         },
-        bindEvent:function(){
+        bindEvent:function(type){
+        },
+        bindLoaded:function(){
+            var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
+            $("#loaded-modules").append(str);
         }
     };
 

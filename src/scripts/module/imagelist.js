@@ -3,6 +3,11 @@
  */
 (function(w) {
     function ListImage(data) {
+        this.moduleObj={
+            img:'/Public/Style/station/images/left13.jpg',
+            name:'列表多图'
+        };
+        this.moduleName='列表多图';
         this.id = Date.now();
         this.title = data.title;
         this.images = data.list;
@@ -16,6 +21,7 @@
         that: this,
         bindTemplate: function () {
             this.bindDom();
+            this.bindLoaded();
         },
         bindDom: function () {
             var that = this;
@@ -108,6 +114,10 @@
                 str += '<li><a href="' + images[i].url + '"><img src="' + images[i].src + '"/></a></li>';
             }
             return str;
+        },
+        bindLoaded:function(){
+            var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
+            $("#loaded-modules").append(str);
         }
     };
 
@@ -214,7 +224,6 @@ $(function(){
             return buf;
         }
         data.list=getImage();
-        console.log(data);
         module_id2(data).bindTemplate();
         $("#bg").hide();
         $("#head-column-list-image").remove();

@@ -3,6 +3,10 @@
  */
 (function(w){
     function ImagePlay(data){
+        this.moduleObj={
+            img:'/Public/Style/station/images/left16.jpg',
+            name:'轮播多图'
+        };
         this.id=Date.now();
         this.title=data.title;
         this.type=data.template_id;
@@ -16,6 +20,7 @@
         constructor:ImagePlay,
         bindTemplate:function(){
             this.bindDom();
+            this.bindLoaded();
         },
         bindDom:function(){
             var dom=this.madeTemplateDom();
@@ -104,6 +109,10 @@
                     break;
             }
             return script;
+        },
+        bindLoaded:function(){
+            var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
+            $("#loaded-modules").append(str);
         }
     };
     w.module_id3=function(data){

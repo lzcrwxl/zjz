@@ -45,7 +45,7 @@ $(function(){
                }
                html+='<fieldset><legend>'+modules[i].text+'</legend><ul>'+innerHtml+'</ul></fieldset>';
            }
-           $('[data-module]').html(html);
+           $('.content-left-list').html(html);
        }
    })
    });

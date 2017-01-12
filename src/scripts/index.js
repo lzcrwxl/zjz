@@ -22,8 +22,15 @@ $(function(){
             }
         });
         //左边头部切换
-        $(".content-left-top").find("div").on("click",function(){
+        $(".content-left-top").find("div:nth-of-type(1)").on("click",function(){
             $(this).addClass("content-left-top-active").siblings().removeClass("content-left-top-active");
+            $("#modules").show();
+            $("#loaded-modules").hide();
+        });
+        $(".content-left-top").find("div:nth-of-type(2)").on("click",function(){
+            $(this).addClass("content-left-top-active").siblings().removeClass("content-left-top-active");
+            $("#modules").hide();
+            $("#loaded-modules").show();
         });
         //左边导航栏切换
         $(".content-left-nav").find("li").on("click",function(){
