@@ -70,7 +70,7 @@
         },
         bindLoaded:function(){
             var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
-            $("#loaded-modules").append(str);
+            $("#loaded-modules").prepend(str);
         }
     };
 

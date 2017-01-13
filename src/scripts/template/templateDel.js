@@ -15,6 +15,8 @@
 //    });
 //    $("#content").on("click",".module-del",function(){
 //        $(this).parents(".module").remove();
+//        var index=$(this).parents('.module').attr('index');
+//        $("#loaded-modules",window.parent.document).find('[index="'+index+'"]').remove();
 //    });
 //    $("#content").on("click",".module-up",function(){
 //        var parent=$(this).parents(".module");
