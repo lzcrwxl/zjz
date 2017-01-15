@@ -294,6 +294,7 @@ legend {
     img{
       float:left;
       margin-left: 8px;
+      cursor:pointer;
     }
     &:after{
       display:block;
@@ -2055,11 +2056,31 @@ legend {
       border: 1px solid #9696FA;
       td{
         padding:2px;
+        border:1px solid red;
       }
       tr{
-        border:1px solid #9696FA;
+        border:1px solid red;
+        td:nth-of-type(3){
+          text-align: center;
+          span{
+            background: red;
+            font-size: 14px;
+            display: inline-block;
+            border-radius: 2px;
+            margin-left: 5px;
+            width:15px;
+            height: 15px;
+            color:#fff;
+            cursor: pointer;
+            font-weight: bold;
+          }
+        }
+      }
+      tr:nth-of-type(even){
+        background: #fff;
       }
       thead{
+        background: #fff;
         td:first-child{
           width: 40%;
         }
@@ -2102,6 +2123,67 @@ legend {
       color:#666;
       border:1px solid #666;
       margin-left:20px;
+    }
+  }
+}
+//弹出层
+.list-roll-pop{
+  position:absolute;
+  z-index: 103;
+  width: 270px;
+  height: 200px;
+  background: #fff;
+  margin:auto;
+  left:0;
+  right: 0;
+  top:200px;
+  .head-column-head{
+    height: 30px;
+    line-height: 30px;
+    background:red;
+    padding:0 10px;
+    .clearfix;
+    span{
+      font-size: 14px;
+      color:#fff;
+      &:first-child{
+        float:left;
+      }
+      &:last-child{
+        font-size: 24px;
+        font-weight: bolder;
+        float:right;
+        cursor: pointer;
+      }
+    }
+  }
+  label{
+    font-size: 14px;
+  }
+  .list-roll-btn{
+    position: absolute;
+    bottom: 15px;
+    //left:185px;
+    left:0;
+    right:0;
+    text-align: center;
+    span{
+      cursor: pointer;
+      display: inline-block;
+      width:52px;
+      height:20px;
+      text-align: center;
+      line-height:20px;
+      border:1px solid red;
+      color:#fff;
+      background:red;
+      border-radius: 2px;
+      &:last-child{
+        background: #f5f5f5;
+        color:#666;
+        border:1px solid #666;
+        margin-left:20px;
+      }
     }
   }
 }

@@ -625,7 +625,8 @@
   </script>
 
   <!--滚动公告-->
-    <div id="head-column-list-roll"  style="display: none;">
+  <script id="rollTemplate" type="text/html">
+    <div id="head-column-list-roll"  style="display: block;">
       <div class="head-column-head"><span>新增栏目</span><span class="column-cancel-list-roll">×</span></div>
       <div class="head-column-nav" >
         <span class="head-column-nav-active column-add-common-list-roll">常规</span>
@@ -634,13 +635,13 @@
       <div class="list-roll-content" style="display: block;">
         <div class="list-roll-title">
           <label for="">模板标题：</label>
-          <input type="text" value="轮播多图">
+          <input type="text" value="滚动公告">
         </div>
         <div class="df mt10 ml20 aic">
           <label for="">公告图标：</label>
           <ul class="df aic">
             <li class="df aic">
-              <input type="radio" name="rollIcon" value="1">
+              <input type="radio" checked name="rollIcon" value="1">
               <img src="../../../../Public/Style/station/images/noticeIco1.gif" alt="">
             </li>
             <li class="df aic">
@@ -660,25 +661,30 @@
         <div class="pl20 pr20">
           <div class="df jcsb aic  mt10">
             <label for="">公告列表：</label>
-            <input type="button" value="添加公告">
+            <input type="button" value="添加公告" id="add-roll">
           </div>
           <table>
             <thead>
-              <td>内容</td>
-              <td>链接地址</td>
-              <td>操作</td>
+              <th>内容</th>
+              <th>链接地址</th>
+              <th>操作</th>
             </thead>
             <tbody>
-              <tr>
-                <td>111111111</td>
-                <td>222222</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
+              <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>222222</td>-->
+                <!--<td><span class="del">×</span><span class="up">↑</span><span class="down">↓</span></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>21</td>-->
+                <!--<td>222222</td>-->
+                <!--<td><span class="del">×</span><span class="up">↑</span><span class="down">↓</span></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>3</td>-->
+                <!--<td>222222</td>-->
+                <!--<td><span class="del">×</span><span class="up">↑</span><span class="down">↓</span></td>-->
+              <!--</tr>-->
             </tbody>
           </table>
         </div>
@@ -704,6 +710,7 @@
       </div>
       <div class="list-roll-btn"><span class="list-roll-add">添加</span><span class="column-cancel-list-roll">取消</span></div>
     </div>
+  </script>
 
 
   <script src="../../../../Public/Style/station/scripts/plug/jquery.min.js"></script>
@@ -719,7 +726,7 @@
   <script src="../../../../Public/Style/station/scripts/common/getPhoto.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/imagelist.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/imageplay.js"></script>
-  <script src="../../../../Public/Style/station/scripts/rollNotice.js"></script>
+  <script src="../../../../Public/Style/station/scripts/module/rollNotice.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadHtml.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadTemplate.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadedModule.js"></script>
