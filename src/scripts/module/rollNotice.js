@@ -1,6 +1,50 @@
 /**
  * Created by NHY on 2017/1/3.
  */
+(function(w){
+    function RollNotice(data){
+        this.id=Date.now();
+        this.title=data.title;
+        this.icon=data.icon;
+        this.speed=data.speed;
+        this.dir=data.direction;
+        this.type=data.template_id;
+        this.list=data.list;
+        this.html=$("<div class='module dads-children rollNotice module"+this.type+"' index='"+this.id+"'></div>")
+    }
+    RollNotice.prototype={
+        constructor:RollNotice,
+        bindTemplate:function(){
+
+        },
+        bindDom:function(){
+            var lis='';
+            for(var i=0;i<this.list.length;i++){
+                lis+="<li><a href='"+this.list[i].url+"'>"+this.list[i].text+"</a></li>"
+            }
+            var dom='<div class="module-top">'+
+                '<h3>滚动公告</h3>'+
+                '</div>'+
+                '<div class="df aic content">'+
+                '<img src="/Public/Style/station/images/noticeIco1.gif" alt="">'+
+                '<div id="s">'+
+                '<ul>'+
+                lis+
+                '</ul>'+
+                '</div>';
+            this.html.append(dom);
+        },
+        bindStyle:function(type){
+
+        },
+        bindEvent:function(type){
+
+        }
+    };
+    w.module_id5=function(data){
+        return new RollNotice(data);
+    };
+})(window);
 $(function(){
     $("body").on('click','#moduleID04',function(){
         var html=template("rollTemplate");

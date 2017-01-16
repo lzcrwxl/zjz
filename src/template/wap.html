@@ -26,53 +26,65 @@
                     <!--<img src="../images/template1/head2.png" alt="">-->
                     <!--<p>产品展示</p>-->
                 <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/head3.png" alt="">-->
-                    <!--<p>新闻动态</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/head4.png" alt="">-->
-                    <!--<p>留言板</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/head5.png" alt="">-->
-                    <!--<p>关于我们</p>-->
-                <!--</li>-->
             </ul>
         </header>
         <div class="banner1">
             <img src="../../../../Public/Style/station/images/template1/banner.png" alt="">
         </div>
-        <!--<nav class="nav1">-->
-            <!--<ul>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/icon1.png" alt=""/>-->
-                    <!--<p>分类查询</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/icon2.png" alt=""/>-->
-                    <!--<p>物流查询</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/icon3.png" alt=""/>-->
-                    <!--<p>购物车</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/icon4.png" alt=""/>-->
-                    <!--<p>我的京东</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/icon5.png" alt=""/>-->
-                    <!--<p>充值</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<img src="../images/template1/icon6.png" alt=""/>-->
-                    <!--<p>领券中心</p>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</nav>-->
         <!--主题内容-->
         <div id="content">
+            <!--滚动公告模块-->
+            <div class="module dads-children rollNotice module1">
+                <div class="module-top">
+                    <h3>滚动公告</h3>
+                </div>
+                <div class="df aic content">
+                    <img src="/Public/Style/station/images/noticeIco1.gif" alt="">
+                    <div id="s">
+                        <ul>
+                            <li><a href="">jQuery文字横向滚动</a></li>
+                            <li><a href="">jQuery制作文字横向滚动</a></li>
+                            <li><a href="">jQuery文字横向滚动</a></li>
+                            <li><a href="">www.jb51.net</a></li>
+                            <li><a href="">jQuery文字横向滚动</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <style>
+                    .rollNotice.module1 .content>div{ position:relative; white-space:nowrap; overflow:hidden; height:20px;}
+                    .rollNotice.module1 ul{position:absolute; top:0; height:20px;display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
+                    .rollNotice.module1 ul li{margin-left:10px;line-height: 20px;}
+                </style>
+                <script>
+                    $.fn.textScroll=function(s){
+                        var speed=60;
+                        switch (s){
+                            case 1:speed=40;
+                                break;
+                            case 2:speed=80;
+                                break;
+                            case 3:speed=120;
+                                break;
+                            default: break;
+                        }
+                        var flag='left',that=$(this),child=that.children();
+                        var p_w=that.width(), w=child.width();
+                        child.css({flag:p_w});
+                        var t=(w+p_w)/speed * 1000;
+                        function play(m){
+                            var tm= m==undefined ? t : m;
+                            var dir={};
+                            dir[flag]=-w;
+                            child.animate(dir,tm,"linear",function(){
+                                $(this).css(flag,p_w);
+                                play();
+                            });
+                        }
+                        play();
+                    };
+                    $("#s").textScroll(1);
+                </script>
+            </div>
             <!--轮播多图模块-->
             <div class="module imagePlay">
                 <div class="module-top">
