@@ -12,9 +12,9 @@ $(function(){
                 if(data.code==0){
                     addModule(data);
                     barCode(data.data.wap);
-                    loadHeadColumn(data.data.column);
+                    //loadHeadColumn(data.data.column);
                 }else{
-                    alert("请求失败");
+                    alert("左边模板图片请求失败");
                 }
            },
            error:function(){

@@ -73,7 +73,7 @@
                         s+
                         '.pages li{list-style-type:none;width:6px;height:6px;border-radius:6px;background-color:white}'+
                         '.pages li:hover{box-shadow:0 0 2px 1px white}'+
-                        '.pages li.active'+this.id+'{background-color:orange;box-shadow:0 0 2px 1px orange}'+
+                        '.pages li.active{background-color:orange;box-shadow:0 0 2px 1px orange}'+
                         '.pages{position:absolute;}.pages.horizontal{left:50%;transform:translateX(-50%);bottom:5px}'+
                         '.pages.horizontal li{display:inline-block;margin-right:10px}'+
                         '.pages.horizontal li:last-child{margin-right:0}'+

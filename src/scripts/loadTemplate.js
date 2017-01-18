@@ -5,17 +5,17 @@ $(function(){
     $("#iframe").load(function(){
         $.ajax({
             type:'get',
-            url:'http://abc.com//index.php/Home/Station/ajax_get_column_data.html',
+            url:'/index.php/Home/Station/ajax_get_column_data.html',
             dataType:'json',
             success:function(data){
                 if(data.code==0){
-                    loadTemplate(data.data);
+                    //loadTemplate(data.data);
                 }else{
                     alert("请求失败");
                 }
             },
             error:function(){
-                alert("请求失败");
+                alert("中间模板请求失败");
             }
         });
         function loadTemplate(data){
