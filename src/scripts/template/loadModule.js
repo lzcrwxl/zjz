@@ -2,7 +2,6 @@
  * Created by NHY on 2017/1/18.
  */
 $(function(){
-    console.log(window.top==window.self);
     $.ajax({
         type:'get',
         url:'/index.php/Home/Station/ajax_get_column_data.html',
@@ -10,7 +9,6 @@ $(function(){
         success:function(data){
             if(data.code==0){
                 loadTemplate(data.data);
-                console.log(data);
             }else{
                 alert("请求失败");
             }
@@ -20,13 +18,16 @@ $(function(){
         }
     });
     function loadTemplate(data){
-        for(var i=data.length-1;i>0;i--){
+        for(var i=data.length-1;i>=0;i--){
             loadModule(data[i]);
         }
     }
     function loadModule(data){
+        console.log(data);
         if(data.module_id==1){
-
+            for(var i=0;i<data.list.length;i++){
+                header(data.list[i])
+            }
         }else if(data.module_id==2){
             //module2(data).bindTemplate();
         }else if(data.module_id==3){
