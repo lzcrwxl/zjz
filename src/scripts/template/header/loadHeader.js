@@ -7,6 +7,7 @@
         this.title=data.text;
         this.icon=data.icon;
         this.status=data.status;
+        this.url=data.url;
         this.dom=$('<li index="'+this.id+'"></li>');
         this.init();
     }
@@ -26,7 +27,10 @@
         bindEvent:function(){
             var that=this;
             this.dom.on("click",function(){
-                //window.location.href=that.url;
+                window.location.href=that.url;
+                if(window.top!==window.self){
+                    $("#content-middle-top input",window.parent.document).val(that.url);
+                }
             });
         }
     };
