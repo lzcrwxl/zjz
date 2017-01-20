@@ -111,7 +111,7 @@
         <input type="text" readonly>
         <img src="../../../../Public/Style/station/images/barcode.png" alt="" id="barcode">
       </div>
-      <iframe src="wap.html" frameborder="0" id="iframe"></iframe>
+      <iframe src="" frameborder="0" id="iframe"></iframe>
     </div>
     <!--右边模块-->
     <div id="content-right">
@@ -237,32 +237,34 @@
   <div id="bg" style="display:none;"></div>
   <!--新增栏目弹窗-->
   <div id="head-column" style="display: none;">
-    <div class="head-column-head"><span>新增栏目</span><span class="column-cancel">×</span></div>
-    <div class="head-column-nav">
-      <span class="head-column-nav-active column-add-common">常规</span>
-      <span class="column-add-special">高级</span>
-    </div>
-    <form name="fm" autocomplete="off">
-      <div class="head-column-content1">
-        <div class="head-column-title"><label for="">栏目名称：</label><input type="text" id="headTitle"></div>
-        <div class="head-column-img"><span>图标：</span><input checked type="radio" name="column-img" value="1" ><label for="">默认</label><input type="radio" name="column-img" value="2"><label for="">隐藏</label><input type="radio" name="column-img" id="imgselect" value="3"><label for="">自定义</label></div>
-        <div class="df mt15" style="display: none;" id="seticon">
-          <div class="head-column-img-origin">默认</div>
-          <div  class="head-column-select-img">
-            <div>
-              <span class="column-add-btn">选择图片</span>
-              <div class="rel dib">
-                <span>添加图片</span>
-                <input type="file" value="添加图片" id="addHeaderIcon" name="addHeaderIcon">
-              </div>
-            </div>
-            <p>最佳尺寸：80×80</p>
-          </div>
-        </div>
-        <div class="head-column-img"><span>开启关闭：</span><input checked="checked" type="radio" name="column-power" id="allpeople"><label for="">开启</label><input type="radio" name="column-power" id="vippeople"><label for="">关闭</label></div>
-        <div class="head-column-btn"><span class="addHeader">添加</span><span class="column-cancel">取消</span></div>
+    <script id="headColumnTemp" type="text/html">
+      <div class="head-column-head"><span>新增栏目</span><span class="column-cancel">×</span></div>
+      <div class="head-column-nav">
+        <span class="head-column-nav-active column-add-common">常规</span>
+        <span class="column-add-special">高级</span>
       </div>
-    </form>
+      <form name="fm" autocomplete="off">
+        <div class="head-column-content1">
+          <div class="head-column-title"><label for="">栏目名称：</label><input type="text" id="headTitle"></div>
+          <div class="head-column-img"><span>图标：</span><input checked type="radio" name="column-img" value="1" ><label for="">默认</label><input type="radio" name="column-img" value="2"><label for="">隐藏</label><input type="radio" name="column-img" id="imgselect" value="3"><label for="">自定义</label></div>
+          <div class="df mt15" style="display: none;" id="seticon">
+            <div class="head-column-img-origin">默认</div>
+            <div  class="head-column-select-img">
+              <div>
+                <span class="column-add-btn">选择图片</span>
+                <div class="rel dib">
+                  <span>添加图片</span>
+                  <input type="file" value="添加图片" id="addHeaderIcon" name="addHeaderIcon">
+                </div>
+              </div>
+              <p>最佳尺寸：80×80</p>
+            </div>
+          </div>
+          <div class="head-column-img"><span>开启关闭：</span><input checked="checked" type="radio" name="column-power" id="allpeople" value="1"><label for="">开启</label><input type="radio" name="column-power" id="vippeople" value="0"><label for="">关闭</label></div>
+          <div class="head-column-btn"><span class="addHeader">添加</span><span class="column-cancel">取消</span></div>
+        </div>
+      </form>
+    </script>
   </div>
   <div id="bg1" style="display: none;"></div>
   <div class="head-column-set-img" style="display: none;">
@@ -721,7 +723,6 @@
   <script src="../../../../Public/Style/station/scripts/module/imageplay.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/rollNotice.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadHtml.js"></script>
-  <script src="../../../../Public/Style/station/scripts/loadTemplate.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadedModule.js"></script>
 </body>
 

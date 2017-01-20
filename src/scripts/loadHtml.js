@@ -3,7 +3,6 @@
  */
 
 $(function(){
-   $("#iframe").load(function(){
        $.ajax({
            type: "GET",
            url: "/index.php/home/station/ajax_get_conf.html",
@@ -23,8 +22,10 @@ $(function(){
        });
        //加载二维码
        function barCode(data){
+           console.log(data);
            var p=$("#content-middle-top");
            p.find("input").val(data.url);
+           $("#iframe").attr('src',data.url);
        }
        function loadHeadColumn(data){
            var html=[];
@@ -47,5 +48,4 @@ $(function(){
            }
            $('.content-left-list').html(html);
        }
-   })
-   });
+});

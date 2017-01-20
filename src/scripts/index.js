@@ -8,19 +8,6 @@
 //'use strict';
 $(function(){
     $("#iframe").load(function(){
-        //右边切换模块图片加载
-        $.ajax({
-            type: "POST",
-            url: "json/module.json",
-            dataType:"json",
-            success: function(msg){
-                var str='';
-                for(var i in msg){
-                    str+='<li><img src="'+msg[i]+'" alt=""></li>';
-                }
-                $(".content-right-content").html(str);
-            }
-        });
         //左边头部切换
         $(".content-left-top").find("div:nth-of-type(1)").on("click",function(){
             $(this).addClass("content-left-top-active").siblings().removeClass("content-left-top-active");

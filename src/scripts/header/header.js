@@ -7,7 +7,7 @@ function Header(title,url,icon,open){
     this.url=url;
     this.icon=icon;
     this.status=open;
-    this.system=system||false;
+    this.system=0;
     this.htmlHeader=new HtmlHeader(this.title,this.icon,this.url,this.close,this.id);
     this.dom=$("<tr index='"+this.id+"'></tr>");
     this.init();
