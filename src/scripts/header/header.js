@@ -1,16 +1,15 @@
 /**
  * Created by NHY on 2016/11/19.
  */
-function Header(title,url,icon,power,system,open){
+function Header(title,url,icon,open){
+    this.id=Date.now();
     this.title=title;
     this.url=url;
     this.icon=icon;
-    this.power=power;
-    this.open=true;
-    this.close=open;
+    this.status=open;
     this.system=system||false;
-    this.htmlHeader=new HtmlHeader(this.title,this.icon,this.url,this.power);
-    this.dom=$("<tr index='"+this.htmlHeader.index+"'></tr>");
+    this.htmlHeader=new HtmlHeader(this.title,this.icon,this.url,this.close,this.id);
+    this.dom=$("<tr index='"+this.id+"'></tr>");
     this.init();
 }
 Header.prototype={
@@ -21,10 +20,6 @@ Header.prototype={
         this.bindDom();
         this.bindEvent();
         this.changeUpDown();
-        if(!this.close){
-            this.close=true;
-            this.dom.find(".column-item1").trigger("click");
-        }
     },
     //绑定节点
     bindDom:function(){
@@ -49,7 +44,7 @@ Header.prototype={
             var ch=par.find(".column-item1");
             var index=$(this).parents('tr').attr('index');
             var iframe=$("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').clone(true);
-            if(that.close){
+            if(that.status){
                 ch.removeClass("column-select").addClass("column-select-active");
                 ch.parent().siblings().find(".column-item3").remove();
                 ch.parent().siblings().find(".column-item4").remove();
@@ -58,17 +53,21 @@ Header.prototype={
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
                 $("#iframe").contents().find(".template-head").append(iframe);
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').toggle();
-                that.close=false;
+                that.status=0;
             }else{
-                if(!that.close) {
-                    ch.removeClass("column-select-active").addClass("column-select");
-                    ch.parent().siblings().find(".column-item2").after('<span class="column-up column-item3"></span><span class="column-down column-item4"></span>');
+                ch.removeClass("column-select-active").addClass("column-select");
+                ch.parent().siblings().find(".column-item2").after('<span class="column-up column-item3"></span><span class="column-down column-item4"></span>');
+                $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
+                father.find(".column-select").last().parents("tr").after(par);
+                if(father.find(".column-select").length){
                     father.find(".column-select").last().parents("tr").after(par);
-                    $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
                     $("#iframe").contents().find(".template-head").find('li:visible').last().after(iframe);
-                    $(this).parents("tr").remove();
+                }else{
+                    father.prepend(par);
+                    $("#iframe").contents().find(".template-head").prepend(iframe);
                 }
-                that.close=true;
+                $(this).parents("tr").remove();
+                that.close=1;
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').toggle();
             }
             //father.find(".column-select").last().parents("tr");
@@ -140,18 +139,18 @@ Header.prototype={
             $("#head-column1").show();
             changeHead(img,txt,address,index,that);
         })
-    },
-    //渲染最上和最下面的节点
-    changeUpDown:function(){
-        var father=$(".right-content2-content").find("tbody");
-        father.find("tr").find(".column-item3").removeClass("column-up-active").end().first().find(".column-item3").addClass("column-up-active");
-        father.find("tr").find(".column-item4").removeClass("column-down-active").end().last().find(".column-item4").addClass("column-down-active");
-    },
-    //改变模板头部的高度
-    changeHeight:function(){
-        var ele=$("#iframe").contents().find(".template-head");
-        var h=ele.outerHeight();
-        console.log(h);
-        ele.css("bottom",-h);
-    }
+        },
+        //渲染最上和最下面的节点
+        changeUpDown:function(){
+            var father=$(".right-content2-content").find("tbody");
+            father.find("tr").find(".column-item3").removeClass("column-up-active").end().first().find(".column-item3").addClass("column-up-active");
+            father.find("tr").find(".column-item4").removeClass("column-down-active").end().last().find(".column-item4").addClass("column-down-active");
+        },
+        //改变模板头部的高度
+        changeHeight:function(){
+            var ele=$("#iframe").contents().find(".template-head");
+            var h=ele.outerHeight();
+            console.log(h);
+            ele.css("bottom",-h);
+        }
 };

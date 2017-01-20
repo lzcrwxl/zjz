@@ -26,7 +26,12 @@ $(function(){
         console.log(data);
         if(data.module_id==1){
             for(var i=0;i<data.list.length;i++){
-                header(data.list[i])
+                var id=Date.now();
+                console.log(id);
+                header(data.list[i],id);
+                if( window.top!==window.self){
+                    new Header(data.list[i],id);
+                }
             }
         }else if(data.module_id==2){
             //module2(data).bindTemplate();

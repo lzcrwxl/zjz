@@ -2,8 +2,8 @@
  * Created by NHY on 2017/1/19.
  */
 (function(w){
-    function HtmlHeader(data){
-        this.id=data.id;
+    function HtmlHeader(data,id){
+        this.id=id;
         this.title=data.text;
         this.icon=data.icon;
         this.status=data.status;
@@ -30,7 +30,7 @@
             });
         }
     };
-    w.header=function(data){
-        return new HtmlHeader(data);
+    w.header=function(data,id){
+        return new HtmlHeader(data,id);
     }
 })(window);

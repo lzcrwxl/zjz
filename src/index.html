@@ -242,48 +242,33 @@
       <span class="head-column-nav-active column-add-common">常规</span>
       <span class="column-add-special">高级</span>
     </div>
-    <div class="head-column-content1">
-      <div class="head-column-title"><label for="">栏目名称：</label><input type="text" id="headTitle"></div>
-      <div class="head-column-img"><span>图标：</span><input type="radio" name="column-img" value="1"><label for="">默认</label><input type="radio" name="column-img" value="2"><label for="">隐藏</label><input type="radio" name="column-img" id="imgselect" value="3"><label for="">自定义</label></div>
-      <div class="df mt15" style="display: none;" id="seticon">
-        <div class="head-column-img-origin">默认</div>
-        <div  class="head-column-select-img">
-          <div>
-            <span class="column-add-btn">选择图片</span>
-            <div class="rel dib">
-              <span>添加图片</span>
-              <input type="file" value="添加图片" id="addHeaderIcon">
+    <form name="fm" autocomplete="off">
+      <div class="head-column-content1">
+        <div class="head-column-title"><label for="">栏目名称：</label><input type="text" id="headTitle"></div>
+        <div class="head-column-img"><span>图标：</span><input checked type="radio" name="column-img" value="1" ><label for="">默认</label><input type="radio" name="column-img" value="2"><label for="">隐藏</label><input type="radio" name="column-img" id="imgselect" value="3"><label for="">自定义</label></div>
+        <div class="df mt15" style="display: none;" id="seticon">
+          <div class="head-column-img-origin">默认</div>
+          <div  class="head-column-select-img">
+            <div>
+              <span class="column-add-btn">选择图片</span>
+              <div class="rel dib">
+                <span>添加图片</span>
+                <input type="file" value="添加图片" id="addHeaderIcon" name="addHeaderIcon">
+              </div>
             </div>
+            <p>最佳尺寸：80×80</p>
           </div>
-          <p>最佳尺寸：80×80</p>
         </div>
+        <div class="head-column-img"><span>开启关闭：</span><input checked="checked" type="radio" name="column-power" id="allpeople"><label for="">开启</label><input type="radio" name="column-power" id="vippeople"><label for="">关闭</label></div>
+        <div class="head-column-btn"><span class="addHeader">添加</span><span class="column-cancel">取消</span></div>
       </div>
-      <div class="head-column-btn"><span class="addHeader">添加</span><span class="column-cancel">取消</span></div>
-    </div>
-    <div class="head-column-content2"  style="display: none;">
-      <div class="head-column-img"><span>链接地址：</span><input type="radio" name="column-link" id="randomicon"><label for="">默认</label><input type="radio" name="column-link" id="selecticon"><label for="">自定义</label></div>
-      <div class="column-link df aic" style="display: none;"><input type="text" placeholder="请输入URL链接" id="writeUrl"><span id="setlink">设置链接</span></div>
-      <div class="head-column-img"><span>权限：</span><input type="radio" name="column-power" id="allpeople"><label for="">所有人</label><input type="radio" name="column-power" id="vippeople"><label for="">会员可见</label></div>
-      <div class="column-rank">
-        <label for="">指定等级：</label>
-        <select name="" id="powerRank">
-          <option value="普通">普通会员及以上</option>
-          <option value="黄金">黄金会员及以上</option>
-          <option value="白金">白金会员及以上</option>
-        </select>
-      </div>
-      <div class="head-column-btn"><span class="addHeader">添加</span><span class="column-cancel">取消</span></div>
-    </div>
+    </form>
   </div>
   <div id="bg1" style="display: none;"></div>
   <div class="head-column-set-img" style="display: none;">
     <div class="head-column-set-head">
       <span>添加系统图标</span><span class="column-back-btn">×</span>
     </div>
-    <select name="" class="color-select">
-      <option value="">炫彩图标</option>
-      <option value="">普通图标</option>
-    </select>
     <ul class="column-icon-content">
       <li>默认</li>
       <li class="icon-active"><img src="../../../../Public/Style/station/images/column1.png" alt=""></li>
@@ -317,12 +302,6 @@
       <li><img src="../../../../Public/Style/station/images/column4.png" alt=""></li>
       <li><img src="../../../../Public/Style/station/images/column5.png" alt=""></li>
     </ul>
-    <div class="df aic color-select-last">
-      <span class="start-color">默认</span>
-      <span class="ml15">颜色：</span>
-      <input type="radio" name="iconColor"><label for="">默认</label>
-      <input type="radio" name="iconColor"><label for="">自定义</label>
-      <a href="javascript:void(0)" id="square_one"></a></div>
     <div class="head-column-btn"><span id="iconSure">确定</span><span class="column-back-btn">返回</span></div>
   </div>
   <div id="set-head-link" style="display: none;">
@@ -733,6 +712,7 @@
   <script src="../../../../Public/Style/station/scripts/header/changeHead.js"></script>
   <script src="../../../../Public/Style/station/scripts/header/htmlHeader.js"></script>
   <script src="../../../../Public/Style/station/scripts/header/header.js"></script>
+  <script src="../../../../Public/Style/station/scripts/header/addHeader.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/imagetext.js"></script>
   <script src="../../../../Public/Style/station/scripts/index.js"></script>
   <script src="../../../../Public/Style/station/scripts/dragDrop.js"></script>
