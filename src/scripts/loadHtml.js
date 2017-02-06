@@ -22,7 +22,6 @@ $(function(){
        });
        //加载二维码
        function barCode(data){
-           console.log(data);
            var p=$("#content-middle-top");
            p.find("input").val(data.url);
            $("#iframe").attr('src',data.url);

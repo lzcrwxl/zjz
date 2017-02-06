@@ -8,7 +8,8 @@
         this.icon=data.icon;
         this.status=data.status;
         this.url=data.url;
-        this.dom=$('<li index="'+this.id+'"></li>');
+        var data=this.bindData();
+        this.dom=$('<li index="'+this.id+'" data='+data+'></li>');
         this.init();
     }
     HtmlHeader.prototype={
@@ -30,9 +31,20 @@
                 window.location.href=that.url;
                 if(window.top!==window.self){
                     $("#content-middle-top input",window.parent.document).val(that.url);
+                    parent.location.reload();
                 }
             });
+        },
+        bindData:function(){
+            var data={};
+            data.id=1;
+            data.text=this.title;
+            data.status=this.status;
+            data.icon=this.icon;
+            var dataStringify=JSON.stringify(data);
+            return dataStringify;
         }
+
     };
     w.header=function(data,id){
         return new HtmlHeader(data,id);
