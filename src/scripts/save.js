@@ -13,6 +13,7 @@ $(function(){
         var data={};
         data.column_id=getColumnId();
         data.column_data=getColumnData();
+        data.module_data=getModuleData();
         console.log(data);
         return data;
     }
@@ -31,6 +32,16 @@ $(function(){
             if($(lis[i]).is(":hidden")){
                 d.status=0;
             }
+            data.push(d);
+        }
+        return data;
+    }
+    function getModuleData(){
+        var data=[];
+        var lis=$("#iframe").contents().find("#content").children(".module");
+        for(var i=0;i<lis.length;i++){
+            var d=$(lis[i]).attr("data");
+            d=JSON.parse(d);
             data.push(d);
         }
         return data;

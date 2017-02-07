@@ -31,7 +31,9 @@
                 window.location.href=that.url;
                 if(window.top!==window.self){
                     $("#content-middle-top input",window.parent.document).val(that.url);
-                    parent.location.reload();
+                    $("#loaded-modules",window.parent.document).empty();
+                    $(".right-content2-content tbody",window.parent.document).empty();
+                    //parent.location.reload();
                 }
             });
         },

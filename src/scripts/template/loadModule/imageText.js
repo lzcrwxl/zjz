@@ -12,8 +12,10 @@
         this.img=data.src;
         this.url=data.url||" ";
         this.text=data.intro||' ';
+        this.template_id=data.template_id;
         this.module=this.bindStyle(data.template_id);
-        this.dom=$("<div class='module imageText dads-children module"+data.template_id+"' index="+this.id+"></div>");
+        var d=this.bindData();
+        this.dom=$("<div class='module imageText dads-children module"+data.template_id+"' index="+this.id+" data="+d+"></div>");
     }
     ImageText.prototype={
         constructor:ImageText,
@@ -70,6 +72,16 @@
         bindLoaded:function(){
             var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
             $("#loaded-modules",window.parent.document).prepend(str);
+        },
+        bindData:function(){
+            var data={};
+            data.module_id=4;
+            data.template_id=this.template_id;
+            data.title=this.title;
+            data.introduce=this.text;
+            data.img=this.img;
+            data=JSON.stringify(data);
+            return data;
         }
     };
 
