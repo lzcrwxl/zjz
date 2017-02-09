@@ -7,11 +7,12 @@
             img:'/Public/Style/station/images/left12.jpg',
             name:'图文展示'
         };
+        this.module_id=data.module_id;
         this.id=Date.now();
         this.title=data.title||"图文展示";
-        this.img=data.src;
+        this.img=data.img;
         this.url=data.url||" ";
-        this.text=data.intro||' ';
+        this.text=data.introduce||' ';
         this.template_id=data.template_id;
         this.module=this.bindStyle(data.template_id);
         var d=this.bindData();
@@ -75,7 +76,7 @@
         },
         bindData:function(){
             var data={};
-            data.module_id=4;
+            data.module_id=this.module_id;
             data.template_id=this.template_id;
             data.title=this.title;
             data.introduce=this.text;

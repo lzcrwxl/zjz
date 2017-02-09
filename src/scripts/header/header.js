@@ -1,14 +1,14 @@
 /**
  * Created by NHY on 2016/11/19.
  */
-function Header(title,url,icon,open){
+function Header(title,icon,open,id){
+    this.template_id=id;
     this.id=Date.now();
     this.title=title;
-    this.url=url;
     this.icon=icon;
     this.status=open;
     this.system=0;
-    this.htmlHeader=new HtmlHeader(this.title,this.icon,this.url,this.close,this.id);
+    this.htmlHeader=new HtmlHeader(this.title,this.icon,this.status,this.id,this.template_id);
     this.dom=$("<tr index='"+this.id+"'></tr>");
     this.init();
 }
@@ -20,6 +20,9 @@ Header.prototype={
         this.bindDom();
         this.bindEvent();
         this.changeUpDown();
+        if(this.status==0){
+            this.dom.find(".column-item1").click();
+        }
     },
     //绑定节点
     bindDom:function(){
@@ -53,6 +56,7 @@ Header.prototype={
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
                 $("#iframe").contents().find(".template-head").append(iframe);
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').toggle();
+                $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').attr('show',0);
                 that.status=0;
             }else{
                 ch.removeClass("column-select-active").addClass("column-select");
@@ -67,8 +71,9 @@ Header.prototype={
                     $("#iframe").contents().find(".template-head").prepend(iframe);
                 }
                 $(this).parents("tr").remove();
-                that.close=1;
+                that.status=1;
                 $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').toggle();
+                $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').attr('show',1);
             }
             //father.find(".column-select").last().parents("tr");
             that.changeUpDown();
@@ -115,8 +120,15 @@ Header.prototype={
         });
         //删除
         this.dom.on("click",".column-item5",function(){
-            $(this).parents("tr").remove();
             var index=$(this).parents('tr').attr('index');
+            $(this).parents("tr").remove();
+            var data=JSON.parse($("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').attr("data"));
+            var d={"column_id":data.id};
+            $.post("/index.php/Home/Station/ajax_delete_column_do.html",d,function(data){
+                if(data.code==0){
+                    alert("删除栏目成功");
+                }
+            });
             $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();
             that.changeUpDown();
         });
@@ -126,19 +138,6 @@ Header.prototype={
         },function(){
             $(this).removeClass("column-title-active");
         });
-        //编辑
-        this.dom.on("click",'.column-item2',function(){
-            var index=$(this).parents('tr').attr('index');
-            var iframe=$("#iframe").contents().find(".template-head").find('li[index="'+index+'"]');
-            var img=iframe.find('img').attr('src');
-            var txt=iframe.find('p').text();
-            var address=that.htmlHeader.url;
-            $("#headTitle1").val(txt);
-            $("#writeUrl1").val(address);
-            $("#bg").show();
-            $("#head-column1").show();
-            changeHead(img,txt,address,index,that);
-        })
         },
         //渲染最上和最下面的节点
         changeUpDown:function(){

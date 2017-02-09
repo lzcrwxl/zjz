@@ -2,13 +2,14 @@
  * Created by NHY on 2016/11/24.
  */
 var HtmlHeaderCount=0;
-function HtmlHeader(title,icon,url,status,id){
+function HtmlHeader(title,icon,status,id,tempalte_id){
     this.title=title;
     this.icon=icon;
-    this.url=url;
     this.status=status;
+    this.template_id=tempalte_id;
     this.id=id;
-    this.dom=$('<li index="'+this.id+'"></li>');
+    var d=this.bindData();
+    this.dom=$('<li index="'+this.id+'" data='+d+' show='+this.status+'></li>');
     this.init();
 }
 HtmlHeader.prototype={
@@ -28,5 +29,14 @@ HtmlHeader.prototype={
         this.dom.on("click",function(){
             window.location.href=that.url;
         });
+    },
+    bindData:function(){
+        var data={};
+        data.id=this.template_id;
+        data.text=this.title;
+        data.status=this.status;
+        data.icon=this.icon;
+        var dataStringify=JSON.stringify(data);
+        return dataStringify;
     }
 };

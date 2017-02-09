@@ -19,11 +19,14 @@ Header.prototype={
         this.bindDom();
         this.bindEvent();
         this.changeUpDown();
+        if(this.status==0){
+            this.dom.find(".column-item1").click();
+        }
     },
     //绑定节点
     bindDom:function(){
         var ele="";
-        if(!this.system){
+        if(this.system==0){
             ele='<td><span class="column-title">'+this.title+'</span></td><td><span class="column-item1 column-select"></span></td><td><span class="column-edit-active column-item2"></span><span class="column-up column-item3"></span><span class="column-down column-item4"></span><span class="column-del column-item5"></span></td>';
         }else{
             ele='<td><span class="column-title column-system">'+this.title+'</span></td><td><span class="column-item1 column-select"></span></td><td><span class="column-edit-active column-item2"></span><span class="column-up column-item3"></span><span class="column-down column-item4"></span></td>';
@@ -51,6 +54,7 @@ Header.prototype={
                 $(".template-head").find('li[index="'+index+'"]').remove();
                 $(".template-head").append(iframe);
                 $(".template-head").find('li[index="'+index+'"]').toggle();
+                $(".template-head").find('li[index="'+index+'"]').attr('show',0);
                 that.status=0;
             }else{
                 ch.removeClass("column-select-active").addClass("column-select");
@@ -66,6 +70,7 @@ Header.prototype={
                 $(this).parents("tr").remove();
                 that.status=1;
                 $(".template-head").find('li[index="'+index+'"]').toggle();
+                $(".template-head").find('li[index="'+index+'"]').attr('show',1);
             }
             //father.find(".column-select").last().parents("tr");
             that.changeUpDown();
@@ -112,8 +117,16 @@ Header.prototype={
         });
         //删除
         this.dom.on("click",".column-item5",function(){
-            $(this).parents("tr").remove();
             var index=$(this).parents('tr').attr('index');
+            $(this).parents("tr").remove();
+            var data=JSON.parse($(".template-head").find('li[index="'+index+'"]').attr("data"));
+            var d={"column_id":data.id};
+            $.post("/index.php/Home/Station/ajax_delete_column_do.html",d,function(data){
+                console.log(data);
+                if(data.code==0){
+                    alert("删除栏目成功");
+                }
+            });
             $(".template-head").find('li[index="'+index+'"]').remove();
             that.changeUpDown();
         });
@@ -123,19 +136,6 @@ Header.prototype={
         },function(){
             $(this).removeClass("column-title-active");
         });
-        //编辑
-        this.dom.on("click",'.column-item2',function(){
-            var index=$(this).parents('tr').attr('index');
-            var iframe=$(".template-head").find('li[index="'+index+'"]');
-            var img=iframe.find('img').attr('src');
-            var txt=iframe.find('p').text();
-            var address=that.htmlHeader.url;
-            $("#headTitle1").val(txt);
-            $("#writeUrl1").val(address);
-            $("#bg").show();
-            $("#head-column1").show();
-            changeHead(img,txt,address,index,that);
-        })
     },
     //渲染最上和最下面的节点
     changeUpDown:function(){
@@ -147,7 +147,6 @@ Header.prototype={
     changeHeight:function(){
         var ele=$(".template-head");
         var h=ele.outerHeight();
-        console.log(h);
         ele.css("bottom",-h);
     }
 };

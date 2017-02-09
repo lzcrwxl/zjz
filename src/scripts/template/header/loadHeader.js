@@ -4,12 +4,18 @@
 (function(w){
     function HtmlHeader(data,id){
         this.id=id;
+        this.template_id=data.id;
         this.title=data.text;
         this.icon=data.icon;
         this.status=data.status;
         this.url=data.url;
-        var data=this.bindData();
-        this.dom=$('<li index="'+this.id+'" data='+data+'></li>');
+        var d=this.bindData();
+        this.dom=$('<li index="'+this.id+'" data='+d+' show='+this.status+'></li>');
+        if( window.top==window.self){
+            if(this.status==0){
+                this.dom.hide();
+            }
+        }
         this.init();
     }
     HtmlHeader.prototype={
@@ -39,7 +45,7 @@
         },
         bindData:function(){
             var data={};
-            data.id=1;
+            data.id=this.template_id;
             data.text=this.title;
             data.status=this.status;
             data.icon=this.icon;

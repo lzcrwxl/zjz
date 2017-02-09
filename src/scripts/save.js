@@ -29,7 +29,7 @@ $(function(){
         for(var i=0;i<lis.length;i++){
             var d=$(lis[i]).attr("data");
             d=JSON.parse(d);
-            if($(lis[i]).is(":hidden")){
+            if($(lis[i]).attr("show")==0){
                 d.status=0;
             }
             data.push(d);
