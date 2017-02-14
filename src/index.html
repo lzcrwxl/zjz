@@ -12,10 +12,12 @@
     <div>
       <span>Hi欢迎来到软融信息中心</span>
       <div>
-        <a class="name" href=""><img src="../../../../Public/Style/station/images/name.png" alt="">用户&nbsp;<span>18118122522</span></a>
-        <a class="generalize">企业概括</a>
-        <a class="connect" >在线咨询</a>
-        <a class="quit" href="">退出</a>
+        <a class="name" href="{:U('Home/User/user_info')}">
+          <img src="<?php echo Token_face_img; ?>" alt=""><b style="font-weight: normal;"><?php echo Token_nick_name; ?></b>
+        </a>
+        <!--a class="generalize">企业概括</a>
+        <a class="connect" >在线咨询</a-->
+        <a class="quit" href="{:U('Home/Index/loginOut')}">退出</a>
       </div>
     </div>
   </div>
@@ -111,7 +113,7 @@
         <input type="text" readonly>
         <img src="../../../../Public/Style/station/images/barcode.png" alt="" id="barcode">
       </div>
-      <iframe src="" frameborder="0" id="iframe"></iframe>
+      <iframe src="" frameborder="0" id="iframe" name="iframe"></iframe>
     </div>
     <!--右边模块-->
     <div id="content-right">
@@ -463,7 +465,7 @@
       <div class="list-play-content1" style="display: none;">
         <!--<div><label for="list-play-interval">展示时间：</label><input type="text" id="list-play-interval" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')"><span>秒</span></div>-->
         <!--<div><label for="list-play-duration">切换速度：</label><input type="text" id="list-play-duration" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')"><span>秒</span></div>-->
-        <div><label for="list-play-showtext">显示图片描述：</label><input type="radio" name="list-play-showtext" value="1" checked>是<input type="radio" name="list-play-showtext" value="2">否</div>
+        <!--<div><label for="list-play-showtext">显示图片描述：</label><input type="radio" name="list-play-showtext" value="1" checked>是<input type="radio" name="list-play-showtext" value="2">否</div>-->
       </div>
       <div class="list-play-btn"><span class="list-play-add">添加</span><span class="column-cancel-list-play">取消</span></div>
     </div>

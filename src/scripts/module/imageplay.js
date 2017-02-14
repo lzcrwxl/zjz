@@ -11,7 +11,6 @@
         this.title=data.title;
         this.type=data.template_id;
         this.images=data.list;
-        this.showtext=data.showtext;
         this.interval=4000;
         this.duration=500;
         this.html=$('<div class="module dads-children imagePlay'+this.id+'" index='+this.id+'></div>');
@@ -27,7 +26,6 @@
             var that=this;
             var id='.imagePlay'+this.id;
             this.html.append(dom);
-            if(that.text==2) this.html.find("h3").hide();
             $("#iframe").contents().find("#content").prepend(that.html);
             var idocument = $('#iframe').prop('contentWindow').document;
             var el = idocument.createElement('script');
@@ -36,18 +34,11 @@
             idocument.querySelector(id).appendChild(el);
         },
         madeTemplateDom:function(){
-            var showtext;
-            if(this.showtext){
-                showtext="block";
-            }else{
-                showtext="none";
-            }
             var items="";
             for(var i=0;i<this.images.length;i++){
-                items+='<div class="section'+this.id+'" id="section'+(this.id+i)+'" onclick="window.location=\''+this.images[i].url+'\'"><h3 style="display: '+showtext+'">'+this.images[i].text+'</h3></div>';
+                items+='<div class="section'+this.id+'" id="section'+(this.id+i)+'" onclick="window.location=\''+this.images[i].url+'\'"></div>';
             }
             var str='<div class="module-top">'+
-                '<h3>'+this.title+'</h3>'+
                 '</div>'+
                 '<div class="imagePlayContainer">'+
                 '<div class="sections'+this.id+'">'+
@@ -147,7 +138,6 @@ $(function(){
             str+='<div class="head-column-head"><span>选择图片</span><span class="list-play-pop-cancel">×</span></div>';
             str+='<div class="list-play-image-select"><input type="file" id="list-play-image" name="list-play-image"></div>';
             str+='<div class="list-play-set-link"><label for="">链接地址：</label><input type="text" id="list-play-link" style="ime-mode:disabled"></div>';
-            str+='<div class="list-play-set-link"><label for="">描述内容：</label><input type="text" id="list-play-text"></div>';
             str+='<div class="list-play-btn"><span class="list-play-pop-add">确定</span><span class="list-play-pop-cancel">取消</span></div>';
             str+='</div>';
             $("body").append(str);
@@ -171,8 +161,7 @@ $(function(){
                 success: function (data) {
                     var url=data.data.src;
                     var href=$("#list-play-link").val();
-                    var text=$("#list-play-text").val();
-                    var str=$('<li class="list-image-added" data-href="'+href+'" data-text="'+text+'"><img src="'+url+'" alt=""></li>');
+                    var str=$('<li class="list-image-added" data-href="'+href+'" ><img src="'+url+'" alt=""></li>');
                     $(".list-play-select").before(str);
                     $(".list-play-count span").html($(".list-play-images").find("li").length-1);
                     $(".list-play-pop").remove();
@@ -197,7 +186,6 @@ $(function(){
                         var obj={};
                         obj['src']=$(lis[i]).find('img').attr('src');
                         obj['url']=$(lis[i]).attr("data-href");
-                        obj['text']=$(lis[i]).attr("data-text");
                         buf.push(obj);
                     }
                 }
@@ -205,7 +193,6 @@ $(function(){
             }
             data.title=title;
             data.template_id=type;
-            data.showtext=show;
             data.list=getImage();
             module_id3(data).bindTemplate();
             $("#bg").hide();

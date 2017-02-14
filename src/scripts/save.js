@@ -31,7 +31,10 @@ $(function(){
             d=JSON.parse(d);
             if($(lis[i]).attr("show")==0){
                 d.status=0;
+            }else{
+                d.status=1;
             }
+            console.log(d);
             data.push(d);
         }
         return data;

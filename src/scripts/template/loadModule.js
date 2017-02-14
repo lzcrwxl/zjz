@@ -3,7 +3,8 @@
  */
 $(function(){
     $.ajax({
-        type:'get',
+        type:'post',
+        data:{column_id:_page_conf.column_id},
         url:'/index.php/Home/Station/ajax_get_column_data.html',
         dataType:'json',
         success:function(data){
@@ -11,6 +12,13 @@ $(function(){
                 loadTemplate(data.data);
             }else{
                 alert("请求失败");
+            }
+            //假如是单独打开的页面，去掉deltemplate文件
+            if( window.top!==window.self){
+                var el = document.createElement('script');
+                $(el).attr("id", "templateDel");
+                el.src="../../../../Public/Style/station/scripts/template/templateDel.js";
+                document.body.appendChild(el);
             }
         },
         error:function(){
@@ -32,7 +40,11 @@ $(function(){
                 }
             }
         }else if(data.module_id==2){
-            //module2(data).bindTemplate();
+            var m2=module2(data);
+            m2.bindTemplate();
+            if( window.top!==window.self){
+                m2.bindLoaded();
+            }
         }else if(data.module_id==3){
             //module3(data).bindTemplate();
         }else if(data.module_id==4){
@@ -42,5 +54,6 @@ $(function(){
                 m4.bindLoaded();
             }
         }
+
     }
 });

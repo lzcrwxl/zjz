@@ -11,9 +11,11 @@
         this.id = Date.now();
         this.title = data.title;
         this.images = data.list;
+        this.template_id=data.template_id;
         this.type = this.bindStyle(data.template_id);
         this.scripts=this.bindEvent(data.template_id);
-        this.html = $("<div class='module imageList dads-children module" +data.template_id+"' index='" + this.id + "'></div>");
+        var d=this.bindData();
+        this.html = $("<div class='module imageList dads-children module" +data.template_id+"' index='" + this.id + "' data="+d+"></div>");
     }
 
     ListImage.prototype = {
@@ -118,6 +120,15 @@
         bindLoaded:function(){
             var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
             $("#loaded-modules").prepend(str);
+        },
+        bindData:function(){
+            var data={};
+            data.module_id="2";
+            data.template_id=this.template_id;
+            data.title=this.title;
+            data.list=this.images;
+            data=JSON.stringify(data);
+            return data;
         }
     };
 
@@ -160,19 +171,8 @@ $(function(){
         var url=getUrl($(this)[0].files[0]);
         $(".list-image-image-select").css("backgroundImage","url("+url+")");
     });
+    //上传图片
     $("body").on("click",".list-image-pop-add",function(){
-        //var url=getUrl($("#list-image-image")[0].files[0]);
-        //var file=$("#list-image-image");
-        //file.attr({"id":"listimage"+listImageIndex,"name":"listimage"+listImageIndex});
-        //file.css("display",'none');
-        //var href=$("#list-image-link").val();
-        //var str=$('<li class="list-image-added" data-href="'+href+'"><img src="'+url+'" alt=""></li>');
-        //str.append(file);
-        //$(".list-image-select").before(str);
-        //$(".list-image-count span").html($(".list-image-images").find("li").length-1);
-        //$(".list-image-pop").remove();
-        //$("#bg1").hide();
-        //listImageIndex++;
         $.ajaxFileUpload({
             url: "/index.php/Home/Station/ajax_upload_images",
             type: 'post',

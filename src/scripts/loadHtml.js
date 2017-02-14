@@ -41,7 +41,7 @@ $(function(){
                for(var j=0;j<modules[i].list.length;j++){
                    var ii=index;
                    ii+=j;
-                   innerHtml+='<li id="'+ii+'"><img src="'+modules[i].list[j].icon+'" alt=""> <p>'+modules[i].list[j].text+'</p> </li>';
+                   innerHtml+='<li id="'+ii+'" module="'+modules[i].list[j].module_id+'"><img src="'+modules[i].list[j].icon+'" alt=""> <p>'+modules[i].list[j].text+'</p> </li>';
                }
                html+='<fieldset><legend>'+modules[i].text+'</legend><ul>'+innerHtml+'</ul></fieldset>';
            }
