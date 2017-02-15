@@ -46,7 +46,11 @@ $(function(){
                 m2.bindLoaded();
             }
         }else if(data.module_id==3){
-            //module3(data).bindTemplate();
+            var m3=module3(data);
+            m3.bindTemplate();
+            if( window.top!==window.self){
+                m3.bindLoaded();
+            }
         }else if(data.module_id==4){
             var m4=module4(data);
             m4.bindTemplate();

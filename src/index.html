@@ -118,53 +118,50 @@
     <!--右边模块-->
     <div id="content-right">
       <div class="content-right-top">
-        <div class="content-right-top-active right-fenge">风格</div>
-        <div class="right-lanmu">栏目</div>
-        <div class="right-fuwu">服务</div>
+        <!--<div class="content-right-top-active right-fenge">风格</div>-->
+        <div class="right-lanmu content-right-top-active">栏目</div>
+        <!--<div class="right-fuwu">服务</div>-->
         <div class="right-xitong">系统</div>
       </div>
       <!--风格模块-->
-      <div id="right-content1" class="right-content">
-        <ul class="content-right-nav">
-          <li class="content-right-nav-active">主题</li>
-          <li>横幅</li>
-          <li>背景</li>
-          <li>欢迎页</li>
-        </ul>
-        <hr>
-        <div class="content-right-middle">
-          <div class="content-right-tab">
-            <span class="">炫彩主题</span>
-            <span class="content-right-tab-active">普通主题</span>
-          </div>
-          <ul>
-            <li class="list-active">全部</li>
-            <li>棕黑</li>
-            <li>蓝调</li>
-            <li>青绿</li>
-            <li>红紫</li>
-            <li>黄橙</li>
-          </ul>
-          <div class="content-right-search">
-            <span>编号:</span>
-            <input type="text" id="search">
-          </div>
-        </div>
-        <ul class="content-right-content">
-          <li><img src="../../../../Public/Style/station/images/right1.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right2.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right3.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right4.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right5.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right6.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right1.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right3.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right4.jpg" alt=""></li>
-          <li><img src="../../../../Public/Style/station/images/right5.jpg" alt=""></li>
-        </ul>
-      </div>
+      <!--<div id="right-content1" class="right-content">-->
+        <!--<ul class="content-right-nav">-->
+          <!--<li class="content-right-nav-active">主题</li>-->
+          <!--<li>横幅</li>-->
+          <!--<li>背景</li>-->
+          <!--<li>欢迎页</li>-->
+        <!--</ul>-->
+        <!--<hr>-->
+        <!--<div class="content-right-middle">-->
+          <!--<div class="content-right-tab">-->
+            <!--<span class="">炫彩主题</span>-->
+            <!--<span class="content-right-tab-active">普通主题</span>-->
+          <!--</div>-->
+          <!--<ul>-->
+            <!--<li class="list-active">全部</li>-->
+            <!--<li>棕黑</li>-->
+            <!--<li>蓝调</li>-->
+            <!--<li>青绿</li>-->
+            <!--<li>红紫</li>-->
+            <!--<li>黄橙</li>-->
+          <!--</ul>-->
+          <!--<div class="content-right-search">-->
+            <!--<span>编号:</span>-->
+            <!--<input type="text" id="search">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<ul class="content-right-content">-->
+          <!--<li><img src="../../../../Public/Style/station/images/right1.jpg" alt=""></li>-->
+          <!--<li><img src="../../../../Public/Style/station/images/right2.jpg" alt=""></li>-->
+          <!--<li><img src="../../../../Public/Style/station/images/right3.jpg" alt=""></li>-->
+          <!--<li><img src="../../../../Public/Style/station/images/right4.jpg" alt=""></li>-->
+          <!--<li><img src="../../../../Public/Style/station/images/right5.jpg" alt=""></li>-->
+          <!--<li><img src="../../../../Public/Style/station/images/right6.jpg" alt=""></li>-->
+        <!--</ul>-->
+      <!--</div>-->
+
       <!--栏目模块-->
-      <div id="right-content2" class="right-content" style="display: none;">
+      <div id="right-content2" class="right-content">
         <div class="right-content2-top">
           <span class="right-content2-top-active right-content2-change1">栏目导航</span>
           <span class="right-content2-change2">栏目样式</span>
@@ -197,6 +194,20 @@
             </div>
           </div>
         </div>
+      </div>
+      <div id="right-content4" class="right-content" style="display: none;">
+		  <ul>
+			  <li><b>浏览器标题：</b><input type="text"></li>
+			  <li><b>网站标题：</b><input type="text"></li>
+			  <li><b>网站LOGO：</b><input type="radio" name="showlogo"><label for="">显示</label><input type="radio" name="showlogo"><label for="">隐藏</label></li>
+			  <li><b>网站横幅：</b><input type="radio"  name="showbanner"><label for="">默认</label><input type="radio" name="showbanner"><label for="">仅首页显示</label><input type="radio" name="showbanner"><label for="">全站显示</label><input type="radio" name="showbanner"><label for="">关闭</label></li>
+			  <li><b>会员登录：</b><input type="radio" name="showlogin"><label for="">显示</label><input type="radio" name="showlogin"><label for="">隐藏</label></li>
+			  <li><b>购物车按钮：</b><input type="radio" name="showshop"><label for="">显示</label><input type="radio" name="showshop"><label for="">隐藏</label></li>
+			  <li><b>网站标题栏：</b><input type="radio" name="showtitle"><label for="">显示</label><input type="radio" name="showtitle"><label for="">隐藏</label></li>
+			  <li><b>全屏模式：</b><input type="radio" name="showbig"><label for="">扫码开启</label><input type="radio" name="showbig"><label for="">开启</label><input type="radio" name="showbig"><label for="">关闭</label></li>
+			  <li><b>背景音乐：</b><input type="radio" name="showmusic"><label for="">开启</label><input type="radio" name="showmusic"><label for="">关闭</label></li>
+			  <li><b>网站底部：</b><input type="radio" name="showbottom"><label for="">显示</label><input type="radio" name="showbottom"><label for="">隐藏</label><span style="color: #00cc99;margin-left: 5px;">[网站专业版的用户可隐藏]</span></li>
+		  </ul>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 /**
- * Created by NHY on 2017/1/11.
+ * Created by NHY on 2017/2/14.
  */
 (function(w){
     function ImagePlay(data){
@@ -20,19 +20,17 @@
         constructor:ImagePlay,
         bindTemplate:function(){
             this.bindDom();
-            this.bindLoaded();
         },
         bindDom:function(){
             var dom=this.madeTemplateDom();
             var that=this;
             var id='.imagePlay'+this.id;
             this.html.append(dom);
-            $("#iframe").contents().find("#content").prepend(that.html);
-            var idocument = $('#iframe').prop('contentWindow').document;
-            var el = idocument.createElement('script');
+            $("#content").prepend(that.html);
+            var el = document.createElement('script');
             $(el).attr("index",that.id);
             el.text=this.bindEvent(this.type);
-            idocument.querySelector(id).appendChild(el);
+            document.querySelector(id).appendChild(el);
         },
         madeTemplateDom:function(){
             var items="";
@@ -105,7 +103,7 @@
         },
         bindLoaded:function(){
             var str='<li index="'+this.id+'"><img src="'+this.moduleObj.img+'" alt=""><p>'+this.moduleObj.name+'</p></li>';
-            $("#loaded-modules").prepend(str);
+            $("#loaded-modules",window.parent.document).prepend(str);
         },
         bindData:function(){
             var data={};
@@ -117,97 +115,7 @@
             return data;
         }
     };
-    w.module_id3=function(data){
+    w.module3=function(data){
         return new ImagePlay(data);
     }
 })(window);
-$(function(){
-    $("#iframe").load(function(){
-        var listPlayIndex=0;
-        $(".content-left-list").on("click","#moduleID05",function(){
-            var html=template("imageplaytemplate");
-            $("#bg").show();
-            $("body").append(html);
-        });
-        $("body").on("click",".column-cancel-list-play",function(){
-            $("#bg").hide();
-            $("#head-column-list-play").remove();
-        });
-        $("body").on('click',".column-add-common-list-play",function(){
-            $(this).addClass("head-column-nav-active").siblings().removeClass("head-column-nav-active");
-            $(".list-play-content").show();
-            $(".list-play-content1").hide();
-        });
-        $("body").on('click',".column-add-special-list-play",function(){
-            $(this).addClass("head-column-nav-active").siblings().removeClass("head-column-nav-active");
-            $(".list-play-content").hide();
-            $(".list-play-content1").show();
-        });
-        $("body").on("click",'.list-play-select',function(){
-            $("#bg1").show();
-            var str='<div class="list-play-pop">';
-            str+='<div class="head-column-head"><span>选择图片</span><span class="list-play-pop-cancel">×</span></div>';
-            str+='<div class="list-play-image-select"><input type="file" id="list-play-image" name="list-play-image"></div>';
-            str+='<div class="list-play-set-link"><label for="">链接地址：</label><input type="text" id="list-play-link" style="ime-mode:disabled"></div>';
-            str+='<div class="list-play-btn"><span class="list-play-pop-add">确定</span><span class="list-play-pop-cancel">取消</span></div>';
-            str+='</div>';
-            $("body").append(str);
-        });
-        $("body").on("click",".list-play-pop-cancel",function(){
-            $(".list-play-pop").remove();
-            $("#bg1").hide();
-        });
-        $("body").on("change","#list-play-image",function(){
-            var url=getUrl($(this)[0].files[0]);
-            $(".list-play-image-select").css("backgroundImage","url("+url+")");
-        });
-        $("body").on("click",".list-play-pop-add",function(){
-            $.ajaxFileUpload({
-                url: "/index.php/Home/Station/ajax_upload_images",
-                type: 'post',
-                data: {'file_name': 'list-play-image'},
-                secureuri: false,
-                fileElementId: 'list-play-image',
-                dataType: 'json',
-                success: function (data) {
-                    var url=data.data.src;
-                    var href=$("#list-play-link").val();
-                    var str=$('<li class="list-image-added" data-href="'+href+'" ><img src="'+url+'" alt=""></li>');
-                    $(".list-play-select").before(str);
-                    $(".list-play-count span").html($(".list-play-images").find("li").length-1);
-                    $(".list-play-pop").remove();
-                    $("#bg1").hide();
-                },
-                error: function (data) {
-                    alert('上传失败'+ data);
-                }
-            });
-        });
-        $("body").on("click",".list-play-add",function(){
-            var data={};
-            var title=$(".list-play-title").find("input").val();
-            var type=$(".list-play-active.active").attr("index");
-
-            function getImage(){
-                var buf=[];
-                var lis=$(".list-play-images").find("li");
-                if(lis.length>1){
-                    for(var i=0;i<lis.length-1;i++){
-                        var obj={};
-                        obj['src']=$(lis[i]).find('img').attr('src');
-                        obj['url']=$(lis[i]).attr("data-href");
-                        buf.push(obj);
-                    }
-                }
-                return buf;
-            }
-            data.title=title;
-            data.template_id=type;
-            data.list=getImage();
-            module_id3(data).bindTemplate();
-            $("#bg").hide();
-            $("#head-column-list-play").remove();
-        });
-    });
-
-});

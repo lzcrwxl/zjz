@@ -73,12 +73,12 @@ $(function(){
             $(".right-content2-content").hide();
         });
         //右边切换
-        $(".right-fenge").on("click",function(){
-            $(".right-content").hide();
-            $("#right-content1").show();
+        $(".right-xitong").on("click",function(){
+            $("#right-content2").hide();
+            $("#right-content4").show();
         });
         $(".right-lanmu").on("click",function(){
-            $(".right-content").hide();
+            $("#right-content4").hide();
             $("#right-content2").show();
         });
     });
