@@ -136,6 +136,7 @@ data={
             data.module_id=5;
             data.template_id=this.type;
             data.title=this.title;
+            data.direction=this.dir;
             data.icon=this.icon;
             data.speed=this.speed;
             data.list=this.list;

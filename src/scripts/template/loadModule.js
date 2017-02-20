@@ -57,6 +57,12 @@ $(function(){
             if( window.top!==window.self){
                 m4.bindLoaded();
             }
+        }else if(data.module_id==5){
+            var m5=module5(data);
+            m5.bindTemplate();
+            if( window.top!==window.self){
+                m5.bindLoaded();
+            }
         }
 
     }
