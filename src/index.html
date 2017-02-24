@@ -483,6 +483,7 @@
   </script>
 
   <!--滚动公告-->
+
   <script id="rollTemplate" type="text/html">
     <div id="head-column-list-roll"  style="display: block;">
       <div class="head-column-head"><span>新增栏目</span><span class="column-cancel-list-roll">×</span></div>
@@ -557,6 +558,41 @@
       <div class="list-roll-btn"><span class="list-roll-add">添加</span><span class="column-cancel-list-roll">取消</span></div>
     </div>
   </script>
+
+  <!--文章列表-->
+  <script id="textlistTemplate" type="text/html">
+    <div id="head-column-text-list" >
+      <div class="head-column-head"><span>新增栏目</span><span class="column-cancel-text-list">×</span></div>
+      <div class="head-column-nav">
+        <span class="head-column-nav-active column-add-common-list-image">常规</span>
+        <span class="column-add-special-list-image">高级</span>
+      </div>
+      <div class="text-list-content">
+        <div class="text-list-title">
+          <label for="">模板标题：</label>
+          <input type="text" value="文章列表">
+        </div>
+        <div class="text-list-style">
+          <label for="">模板样式：</label>
+          <div>
+            <div>
+              <img src="../../../../Public/Style/station/images/textList1.jpg" alt="">
+              <div class="list-image-active  active" index="1"></div>
+            </div>
+            <!--<div>-->
+              <!--<img src="../../../../Public/Style/station/images/productList2.jpg" alt="">-->
+              <!--<div class="list-image-active" index="2"></div>-->
+            <!--</div>-->
+          </div>
+        </div>
+        <div class="text-list-count">
+          <label for="">文章篇数：</label>
+          <input maxlength="1" type="text" placeholder="每页文章篇数" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+        </div>
+      </div>
+      <div class="text-list-btn"><span class="text-list-add">添加</span><span class="column-cancel-text-list">取消</span></div>
+    </div>
+  </script>
   <include file="Public/foot"/>
 
   <script src="../../../../Public/Style/station/scripts/plug/jquery.min.js"></script>
@@ -575,6 +611,7 @@
   <script src="../../../../Public/Style/station/scripts/module/imagelist.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/imageplay.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/rollNotice.js"></script>
+  <script src="../../../../Public/Style/station/scripts/module/textList.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadHtml.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadedModule.js"></script>
   <script src="../../../../Public/Style/station/scripts/save.js"></script>

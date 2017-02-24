@@ -63,6 +63,12 @@ $(function(){
             if( window.top!==window.self){
                 m5.bindLoaded();
             }
+        }else if(data.module_id==6){
+            var m6=module6(data);
+            m6.bindTemplate();
+            if( window.top!==window.self){
+                m6.bindLoaded();
+            }
         }
 
     }
