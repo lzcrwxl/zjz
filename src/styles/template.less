@@ -188,12 +188,14 @@ img{
     width: 100%;
   }
 }
+.module{
+  margin-top:5px;
+}
 .module-top{
   height: 35px;
   line-height: 35px;
   position: relative;
   background:#fff;
-  margin-top:10px;
   border-bottom: 1px solid #eee;
   cursor: -webkit-grab;
   cursor: -moz-grab;
@@ -524,6 +526,40 @@ img{
     }
     &>div{
       width: 90%;
+    }
+  }
+}
+//魔方导航
+.navigation{
+  &.module1{
+    ul{
+      .clearfix;
+      li{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width:33.3%;
+        border:1px solid #eee;
+        height: 100px;
+        float:left;
+        background: #fff;
+        a{
+          width:100%;
+          height: 100%;
+          .df;
+          .fdc;
+          .aic;
+          .jcc;
+          img{
+            width:55px;
+            height: 55px;
+          }
+          p{
+            margin-top: 10px;
+            color:#333;
+          }
+        }
+      }
     }
   }
 }
