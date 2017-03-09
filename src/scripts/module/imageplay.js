@@ -109,7 +109,7 @@
         },
         bindData:function(){
             var data={};
-            data.module_id="3";
+            data.module_id="6";
             data.template_id=this.type;
             data.title=this.title;
             data.list=this.images;
@@ -117,7 +117,7 @@
             return data;
         }
     };
-    w.module_id3=function(data){
+    w.module_id6=function(data){
         return new ImagePlay(data);
     }
 })(window);
@@ -204,7 +204,7 @@ $(function(){
             data.title=title;
             data.template_id=type;
             data.list=getImage();
-            module_id3(data).bindTemplate();
+            module_id6(data).bindTemplate();
             $("#bg").hide();
             $("#head-column-list-play").remove();
         });

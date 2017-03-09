@@ -4,6 +4,7 @@
 $(function(){
     $(".save").click(function(){
         var data=getData();
+        console.log(data);
         $.post("/index.php/Home/Station/ajax_save_column_data.html",data,function(data){
             alert('保存成功');
         },"json");
@@ -12,7 +13,7 @@ $(function(){
     function getData(){
         var data={};
         data.column_id=getColumnId();
-        data.column_data=getColumnData();
+        data.columns_data=getColumnData();
         data.module_data=getModuleData();
         console.log(data);
         return data;

@@ -86,7 +86,7 @@
         }
     };
 
-    w.module4=function(data){
+    w.module2=function(data){
         return new ImageText(data);
     };
 })(window);

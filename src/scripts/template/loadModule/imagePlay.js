@@ -107,7 +107,7 @@
         },
         bindData:function(){
             var data={};
-            data.module_id="3";
+            data.module_id="6";
             data.template_id=this.type;
             data.title=this.title;
             data.list=this.images;
@@ -115,7 +115,7 @@
             return data;
         }
     };
-    w.module3=function(data){
+    w.module6=function(data){
         return new ImagePlay(data);
     }
 })(window);

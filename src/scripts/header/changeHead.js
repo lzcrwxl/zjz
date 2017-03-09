@@ -276,7 +276,7 @@ $("body").on("click","#changeHeader",function(){
         default:break;
     }
     data.status=$("[name='column-power']").val();
-    data.title=par.find("#headTitle").val();
+    data.text=par.find("#headTitle").val();
     data.icon=icon;
     var d=JSON.stringify(data);
     $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').find("p").html(par.find("#headTitle").val());

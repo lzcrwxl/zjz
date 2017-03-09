@@ -76,7 +76,7 @@
         },
         bindData:function(){
             var data={};
-            data.module_id=4;
+            data.module_id=2;
             data.template_id=this.template_id;
             data.title=this.title;
             data.introduce=this.text;
@@ -86,7 +86,7 @@
         }
     };
 
-    w.module_id4=function(data){
+    w.module_id2=function(data){
         return new ImageText(data);
     };
 })(window);
@@ -134,7 +134,7 @@
                         data.intro=text;
                         data.template_id=index;
                         data.url=url;
-                        module_id4(data).bindTemplate();
+                        module_id2(data).bindTemplate();
                         $('#imageTextNav').val("");
                         $("#imageTextText" + index).val("");
                         $("#imageTextUrl" + index).val("http://");

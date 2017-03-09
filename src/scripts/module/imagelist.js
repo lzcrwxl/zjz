@@ -123,7 +123,7 @@
         },
         bindData:function(){
             var data={};
-            data.module_id="2";
+            data.module_id="3";
             data.template_id=this.template_id;
             data.title=this.title;
             data.list=this.images;
@@ -132,7 +132,7 @@
         }
     };
 
-    w.module_id2=function(data){
+    w.module_id3=function(data){
         return new ListImage(data);
     };
 })(window);
@@ -224,7 +224,7 @@ $(function(){
             return buf;
         }
         data.list=getImage();
-        module_id2(data).bindTemplate();
+        module_id3(data).bindTemplate();
         $("#bg").hide();
         $("#head-column-list-image").remove();
 

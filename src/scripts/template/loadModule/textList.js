@@ -9,7 +9,7 @@
         };
         this.id=Date.now();
         this.title=data.title||"文章列表";
-        this.list=null;
+        this.list=data.list;
         this.page_size=data.page_size;
         this.template_id=data.template_id;
         this.module=this.bindStyle(data.template_id);
@@ -20,24 +20,14 @@
         constructor:TextList,
         bindTemplate:function(){
             var that=this;
-            $.ajax({
-                type: "POST",
-                url: "../../../../Public/Style/station/json/textlist.json",
-                dataType:"json",
-                success: function(msg){
-                    that.list=msg;
-                    that.bindDom();
-                    that.bindLoaded();
-                },
-                error:function(){
-                    alert("获取文章列表失败");
-                }
-            });
+            that.bindDom();
+            that.bindLoaded();
         },
         bindDom:function(){
+            var that=this;
             var lis="";
             for(var i=0;i<this.page_size;i++){
-                lis+='<li>'+this.list[i].text+'</li>';
+                lis+='<li><a href="'+this.list[i].url+'">'+this.list[i].title+'</a></li>';
             }
             var str='<div class="module-top">'+
                 '<h3>'+this.title+'</h3>'+
@@ -46,8 +36,8 @@
                 lis+
                 '</ul>';
             this.dom.html(str);
-            this.dom.append(this.module);
-            $('#content').prepend(this.dom);
+            this.dom.append(that.module);
+            $('#content').prepend(that.dom);
         },
         bindStyle:function(id){
             var str='';
@@ -72,16 +62,17 @@
         },
         bindData:function(){
             var data={};
-            data.module_id=6;
+            data.module_id=4;
             data.template_id=this.template_id;
             data.title=this.title;
             data.page_size=this.page_size;
+            data.list=this.list;
             data=JSON.stringify(data);
             return data;
         }
     };
 
-    w.module6=function(data){
+    w.module4=function(data){
         return new TextList(data);
     };
 })(window);

@@ -212,7 +212,7 @@
     </div>
   </div>
   <!--遮盖背景-->
-  <div id="bg" style="display:block;"></div>
+  <div id="bg" style="display:none;"></div>
   <!--新增栏目弹窗-->
   <div id="head-column" style="display: none;">
     <script id="headColumnTemp" type="text/html">
@@ -594,68 +594,73 @@
     </div>
   </script>
 
-  <div id="navBar" >
-	  <div class="head-column-head"><span>新增栏目</span><span class="column-cancel-navbar">×</span></div>
-	  <div class="head-column-nav">
-		  <span class="head-column-nav-active column-add-common-list-image">常规</span>
-		  <span class="column-add-special-list-image">高级</span>
+  <script type="text/html" id="navBarTemplate">
+	  <div id="navBar" >
+		  <div class="head-column-head"><span>新增栏目</span><span class="column-cancel-navbar">×</span></div>
+		  <div class="head-column-nav">
+			  <span class="head-column-nav-active column-add-common-list-image">常规</span>
+			  <span class="column-add-special-list-image">高级</span>
+		  </div>
+		  <div class="navBarStyle">
+			  <p>样式：</p>
+			  <div>
+				<ul>
+					<li>
+						<img src="../../../../Public/Style/station/images/navStyle1.jpg" alt="">
+						<div class="navActive"></div>
+					</li>
+				</ul>
+			  </div>
+		  </div>
+		  <div class="pl20 pr20">
+			  <div class="df jcsb aic  mt10">
+				  <label for="">公告列表：</label>
+				  <input type="button" value="添加内容" id="add-nav">
+			  </div>
+			  <table>
+				  <thead>
+				  <th>标题</th>
+				  <th>链接地址</th>
+				  <th>图标</th>
+				  <th>操作</th>
+				  </thead>
+				  <tbody id="navContent">
+				  <!--<tr>-->
+					  <!--<td><span>rwer</span></td>-->
+					  <!--<td><span>baidudddddd</span></td>-->
+					  <!--<td><img src="../../../../Public/Style/station/images/navStyle1.jpg" alt=""></td>-->
+					  <!--<td><span class="del">×</span></td>-->
+				  <!--</tr>-->
+				  </tbody>
+			  </table>
+		  </div>
+		  <div class="text-list-btn"><span class="navbar-add">添加</span><span class="column-cancel-navbar">取消</span></div>
 	  </div>
-	  <div class="navBarStyle">
-		  <p>样式：</p>
-		  <div>
-			<ul>
-				<li>
-					<img src="../../../../Public/Style/station/images/navStyle1.jpg" alt="">
-					<div class="navActive"></div>
-				</li>
-			</ul>
+  </script>
+  <script type="text/html" id="navBarPop">
+	  <div class="navBarPop">
+		  <div class="head-column-head">
+			  <span>添加内容</span>
+			  <span class="navbar-pop-cancel">×</span>
+		  </div>
+		  <div class="list-image-set-link">
+			  <label for="">标题：</label>
+			  <input id="navTitle"  type="text">
+		  </div>
+		  <div class="list-image-set-link">
+			  <label for="">链接地址：</label>
+			  <input id="navUrl" style="ime-mode:disabled" type="url">
+		  </div>
+		  <div class="list-image-set-link">
+			  <label for="">图标：</label>
+			  <input id="navImg" name="navImg"  type="file" style="width:100px;" data-url="">
+		  </div>
+		  <div class="navbarpop-btn">
+			  <span class="navbar-pop-add">确定</span>
+			  <span class="navbar-pop-cancel">取消</span>
 		  </div>
 	  </div>
-	  <div class="pl20 pr20">
-		  <div class="df jcsb aic  mt10">
-			  <label for="">公告列表：</label>
-			  <input type="button" value="添加内容" id="add-nav">
-		  </div>
-		  <table>
-			  <thead>
-			  <th>标题</th>
-			  <th>链接地址</th>
-			  <th>图标</th>
-			  <th>操作</th>
-			  </thead>
-			  <tbody id="navContent">
-			  <!--<tr>-->
-			  <!--<td>1</td>-->
-			  <!--<td>222222</td>-->
-			  <!--<td><span class="del">×</span><span class="up">↑</span><span class="down">↓</span></td>-->
-			  <!--</tr>-->
-			  </tbody>
-		  </table>
-	  </div>
-	  <div class="text-list-btn"><span class="text-list-add">添加</span><span class="column-cancel-nav">取消</span></div>
-  </div>
-  <div class="navBarPop">
-	  <div class="head-column-head">
-		  <span>添加内容</span>
-		  <span class="navbar-pop-cancel">×</span>
-	  </div>
-	  <div class="list-image-set-link">
-		  <label for="">标题：</label>
-		  <input id=""  type="text">
-	  </div>
-	  <div class="list-image-set-link">
-		  <label for="">链接地址：</label>
-		  <input id="" style="ime-mode:disabled" type="url">
-	  </div>
-	  <div class="list-image-set-link">
-		  <label for="">图标：</label>
-		  <input id=""  type="file" style="width: 120px">
-	  </div>
-	  <div class="navbarpop-btn">
-		  <span class="navbar-pop-add">确定</span>
-		  <span class="navbar-pop-cancel">取消</span>
-	  </div>
-  </div>
+  </script>
 
 
   <include file="Public/foot"/>
@@ -677,6 +682,7 @@
   <script src="../../../../Public/Style/station/scripts/module/imageplay.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/rollNotice.js"></script>
   <script src="../../../../Public/Style/station/scripts/module/textList.js"></script>
+  <script src="../../../../Public/Style/station/scripts/module/navBar.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadHtml.js"></script>
   <script src="../../../../Public/Style/station/scripts/loadedModule.js"></script>
   <script src="../../../../Public/Style/station/scripts/save.js"></script>

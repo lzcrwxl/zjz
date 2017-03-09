@@ -121,7 +121,7 @@
         },
         bindData:function(){
             var data={};
-            data.module_id="2";
+            data.module_id="3";
             data.template_id=this.template_id;
             data.title=this.title;
             data.list=this.images;
@@ -130,7 +130,7 @@
         }
     };
 
-    w.module2=function(data){
+    w.module3=function(data){
         return new ListImage(data);
     };
 })(window);

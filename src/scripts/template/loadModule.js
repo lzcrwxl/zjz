@@ -8,6 +8,7 @@ $(function(){
         url:'/index.php/Home/Station/ajax_get_column_data.html',
         dataType:'json',
         success:function(data){
+            console.log(data);
             if(data.code==0){
                 loadTemplate(data.data);
             }else{
@@ -68,6 +69,12 @@ $(function(){
             m6.bindTemplate();
             if( window.top!==window.self){
                 m6.bindLoaded();
+            }
+        }else if(data.module_id==7){
+            var m7=module7(data);
+            m7.bindTemplate();
+            if( window.top!==window.self){
+                m7.bindLoaded();
             }
         }
 

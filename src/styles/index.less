@@ -674,6 +674,7 @@ legend {
           display: inline-block;
           width:12px;
           height: 12px;
+          cursor: pointer;
         }
         &:nth-of-type(2){
           width:90px;
@@ -2596,23 +2597,22 @@ legend {
     td{
       padding:2px;
       border:1px solid red;
+      text-align: center;
+      vertical-align: middle;
+      .del{
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        background: red;
+        color: #fff;
+        cursor: pointer;
+      }
     }
     tr{
       border:1px solid red;
-      td:nth-of-type(3){
-        text-align: center;
-        span{
-          background: red;
-          font-size: 14px;
-          display: inline-block;
-          border-radius: 2px;
-          margin-left: 5px;
-          width:15px;
-          height: 15px;
-          color:#fff;
-          cursor: pointer;
-          font-weight: bold;
-        }
+      img{
+        width: 20px;
+        height: 20px;
       }
     }
     tr:nth-of-type(even){

@@ -8,6 +8,7 @@ $(function(){
            url: "/index.php/home/station/ajax_get_conf.html",
            dataType: "json",
            success:function(data){
+               console.log(data);
                 if(data.code==0){
                     addModule(data);
                     barCode(data.data.wap);
