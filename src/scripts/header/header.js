@@ -126,7 +126,7 @@ Header.prototype={
             var d={"column_id":data.id};
             $.post("/index.php/Home/Station/ajax_delete_column_do.html",d,function(data){
                 if(data.code==0){
-                    alert("删除栏目成功");
+                    loadingPop("删除栏目成功");
                 }
             });
             $("#iframe").contents().find(".template-head").find('li[index="'+index+'"]').remove();

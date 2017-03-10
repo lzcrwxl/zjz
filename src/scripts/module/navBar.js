@@ -129,7 +129,7 @@ $("body").on("change","#navImg",function(){
             $("#navImg").attr("data-url",url);
         },
         error: function (data) {
-            alert('上传失败');
+            loadingPop('上传失败');
         }
     });
 });

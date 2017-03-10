@@ -79,6 +79,57 @@
     visibility:hidden;
   }
 }
+.loadingPop{
+  position:absolute;
+  z-index: 103;
+  width: 270px;
+  height: 120px;
+  background: #fff;
+  margin:auto;
+  left:0;
+  right: 0;
+  top:200px;
+  .head-column-head{
+    height: 30px;
+    line-height: 30px;
+    background:red;
+    padding:0 10px;
+    text-align: center;
+    .clearfix;
+    span{
+      font-weight: bold;
+      display: inline-block;
+      font-size: 14px;
+      color:#fff;
+    }
+  }
+  p{
+    text-align: center;
+    margin-top: 17px;
+    color:#777;
+  }
+  .loadingpop-btn{
+    position: absolute;
+    bottom: 8px;
+    //left:185px;
+    left:0;
+    right:0;
+    span{
+      float:right;
+      cursor: pointer;
+      display: inline-block;
+      width:52px;
+      height:20px;
+      text-align: center;
+      line-height:20px;
+      border:1px solid red;
+      color:#fff;
+      background:red;
+      border-radius: 2px;
+      margin-right: 17px;
+    }
+  }
+}
 //头部尾部
 #head{
   height:35px;
@@ -816,6 +867,10 @@ legend {
   position:relative;
 }
 .column-title-active{
+  color:#fff!important;
+  background: red;
+}
+.column-title-active1{
   color:#fff!important;
   background: red;
 }

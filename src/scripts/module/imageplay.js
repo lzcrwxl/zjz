@@ -179,7 +179,7 @@ $(function(){
                     $("#bg1").hide();
                 },
                 error: function (data) {
-                    alert('上传失败'+ data);
+                    loadingPop('上传失败');
                 }
             });
         });

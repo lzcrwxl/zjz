@@ -9,10 +9,15 @@ $(function(){
         dataType:'json',
         success:function(data){
             console.log(data);
+            console.log(_page_conf);
+            if( window.top!==window.self){
+                $("#loaded-modules",window.parent.document).empty();
+                $(".right-content2-content",window.parent.document).find("tbody").empty();
+            }
             if(data.code==0){
                 loadTemplate(data.data);
             }else{
-                alert("请求失败");
+                loadingPop("请求失败");
             }
             //假如是单独打开的页面，去掉deltemplate文件
             if( window.top!==window.self){

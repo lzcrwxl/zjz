@@ -93,7 +93,7 @@
                 new Header(d.data.text, d.data.icon, d.data.status, d.data.id);
                 delColumn();
             }else{
-                alert("添加失败");
+                loadingPop("添加失败");
             }
         },"json");
 
@@ -144,7 +144,7 @@ $('body').on("change","#addHeaderIcon",function(){
             $("#addHeaderIcon").attr("data-url",url);
         },
         error: function (data) {
-            alert('图片选取失败'+data);
+            loadingPop('图片选取失败');
         }
     });
 });
@@ -156,7 +156,7 @@ $("body").on("click",".column-item5",function(){
     var d={"column_id":data.id};
     $.post("/index.php/Home/Station/ajax_delete_column_do.html",d,function(data){
         if(data.code==0){
-            alert("删除栏目成功");
+            loadingPop("删除栏目成功");
         }
     });
 });

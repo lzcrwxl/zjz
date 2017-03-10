@@ -62,3 +62,17 @@ $.fn.togglefn = function( fn ) {
 
     return this.click( toggler );
 }
+
+function loadingPop(msg){
+    var str='<div class="loadingPop">'+
+        '<div class="head-column-head">'+
+        '<span>提示</span>'+
+        '</div>'+
+        '<p>'+msg+'</p>'+
+        '<div class="loadingpop-btn">'+
+        '<span class="loading-pop-add">确定</span>'+
+        '</div>'+
+        '</div>';
+    $("#bg").show();
+    $("body").append(str);
+}

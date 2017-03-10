@@ -103,7 +103,7 @@
                     $("#bg").hide();
                 },
                 error:function(){
-                    alert("获取文章列表失败");
+                    loadingPop("获取文章列表失败");
                 }
             });
         });

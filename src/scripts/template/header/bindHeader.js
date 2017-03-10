@@ -3,6 +3,7 @@
  */
 function Header(data,id){
     this.id=id;
+    this.p_id=data.id;
     this.title=data.text;
     this.url=data.url;
     this.icon=data.icon;
@@ -32,6 +33,9 @@ Header.prototype={
             ele='<td><span class="column-title column-system">'+this.title+'</span></td><td><span class="column-item1 column-select"></span></td><td><span class="column-edit-active column-item2"></span><span class="column-up column-item3"></span><span class="column-down column-item4"></span></td>';
         }
         var d=this.dom.append(ele);
+        if(_page_conf.column_id==this.p_id){
+            d.find(".column-title").addClass("column-title-active1");
+        }
         $(".right-content2-content",window.parent.document).find("tbody").append(d);
         //this.changeHeight();
     },
@@ -124,7 +128,7 @@ Header.prototype={
             $.post("/index.php/Home/Station/ajax_delete_column_do.html",d,function(data){
                 console.log(data);
                 if(data.code==0){
-                    alert("删除栏目成功");
+                    loadingPop("删除栏目成功");
                 }
             });
             $(".template-head").find('li[index="'+index+'"]').remove();
@@ -135,6 +139,10 @@ Header.prototype={
             $(this).addClass("column-title-active");
         },function(){
             $(this).removeClass("column-title-active");
+        });
+        this.dom.on("click",".column-title",function(){
+            $("#iframe",window.parent.document).attr("src",that.url);
+            $("#content-middle-top",window.parent.document).find("input").val(that.url);
         });
     },
     //渲染最上和最下面的节点

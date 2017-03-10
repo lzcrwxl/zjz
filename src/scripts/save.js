@@ -6,7 +6,7 @@ $(function(){
         var data=getData();
         console.log(data);
         $.post("/index.php/Home/Station/ajax_save_column_data.html",data,function(data){
-            alert('保存成功');
+            loadingPop('保存成功');
         },"json");
 
     });

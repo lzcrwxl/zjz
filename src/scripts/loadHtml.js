@@ -14,11 +14,11 @@ $(function(){
                     barCode(data.data.wap);
                     //loadHeadColumn(data.data.column);
                 }else{
-                    alert("左边模板图片请求失败");
+                    loadingPop("左边模板图片请求失败");
                 }
            },
            error:function(){
-               alert("请求错误");
+               loadingPop("请求错误");
            }
        });
        //加载二维码

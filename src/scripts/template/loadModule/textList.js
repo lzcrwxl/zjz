@@ -21,7 +21,6 @@
         bindTemplate:function(){
             var that=this;
             that.bindDom();
-            that.bindLoaded();
         },
         bindDom:function(){
             var that=this;

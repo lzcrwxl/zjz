@@ -50,11 +50,11 @@ $(function(){
                     if(data.code==0){
                         $(that).after('<div class="url-barcode"><img src="'+data.data.wap.qr+'" alt=""><span></span></div>');
                     }else{
-                        alert("请求失败");
+                        loadingPop("请求失败");
                     }
                 },
                 error:function(){
-                    alert("请求错误");
+                    loadingPop("请求错误");
                 }
             });
 
@@ -80,6 +80,10 @@ $(function(){
         $(".right-lanmu").on("click",function(){
             $("#right-content4").hide();
             $("#right-content2").show();
+        });
+        $("body").on("click",".loading-pop-add",function(){
+            $(".loadingPop").remove();
+            $("#bg").hide();
         });
     });
 });
