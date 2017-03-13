@@ -122,7 +122,6 @@
     }
 })(window);
 $(function(){
-    $("#iframe").load(function(){
         var listPlayIndex=0;
         $(".content-left-list").on("click","#moduleID05",function(){
             var html=template("imageplaytemplate");
@@ -208,6 +207,4 @@ $(function(){
             $("#bg").hide();
             $("#head-column-list-play").remove();
         });
-    });
-
 });

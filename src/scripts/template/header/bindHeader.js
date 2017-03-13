@@ -126,7 +126,6 @@ Header.prototype={
             var data=JSON.parse($(".template-head").find('li[index="'+index+'"]').attr("data"));
             var d={"column_id":data.id};
             $.post("/index.php/Home/Station/ajax_delete_column_do.html",d,function(data){
-                console.log(data);
                 if(data.code==0){
                     loadingPop("删除栏目成功");
                 }

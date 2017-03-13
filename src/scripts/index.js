@@ -54,6 +54,7 @@ $(function(){
                     }
                 },
                 error:function(){
+                    console.log("内容");
                     loadingPop("请求错误");
                 }
             });

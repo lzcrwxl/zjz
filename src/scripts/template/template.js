@@ -99,6 +99,6 @@ function loadingPop(msg){
         '<span class="loading-pop-add">确定</span>'+
         '</div>'+
         '</div>';
-    $("#bg").show();
-    $("body").append(str);
+    $("#bg",window.parent.document).show();
+    $("body",window.parent.document).append(str);
 }

@@ -75,7 +75,6 @@
     };
 })(window);
 (function(){
-    $("#iframe").load(function() {
         $(".content-left-list").on("click", "#moduleID03", function () {
             var html=template('textlistTemplate');
             $("body").append(html);
@@ -91,12 +90,14 @@
             data.title=$(".text-list-title").find("input").val();
             data.template_id=$(".list-image-active.active").attr("index");
             data.page_size=$(".text-list-count").find("input").val();
+            console.log(1);
             $.ajax({
                 type: "POST",
                 url: "/index.php/Home/Station/ajax_get_module_art_data.html",
                 data:data.page_size,
                 dataType:"json",
                 success: function(msg){
+                    console.log(2);
                     data.list=msg.data;
                     module_id4(data).bindTemplate();
                     $("#head-column-text-list").remove();
@@ -107,5 +108,4 @@
                 }
             });
         });
-    });
 })();

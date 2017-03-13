@@ -149,24 +149,6 @@ data={
     };
 })(window);
 $(function(){
-    $("#iframe").load(function() {
-        var data = {
-            title: 'abc',
-            template_id: 1,
-            icon: '/Public/Style/station/images/noticeIco1.gif',
-            speed: '1',
-            direction: 'left',
-            list: [
-                {
-                    url: '',
-                    text: '123'
-                },
-                {
-                    url: '',
-                    text: '123'
-                }
-            ]
-        };
         $("body").on('click', '#moduleID04', function () {
             var html = template("rollTemplate");
             $("body").append(html);
@@ -265,5 +247,4 @@ $(function(){
             par.find("tr:first-child").find(".up").hide();
             par.find("tr:last-child").find('.down').hide();
         }
-    })
 });

@@ -70,7 +70,7 @@
         });
         switch(value){
             case '1':
-                icon=getAbsoluteUrl("/Public/style/station/images/template1/head1.png");
+                icon=getAbsoluteUrl("/Public/Style/Station/images/template1/head1.png");
                 break;
             case '2':
                 icon=false;
@@ -90,7 +90,7 @@
         $.post("/index.php/Home/Station/ajax_add_column_do.html",data,function(d){
             console.log(d);
             if(d.code==0){
-                new Header(d.data.text, d.data.icon, d.data.status, d.data.id);
+                new Header(d.data.text, d.data.icon, d.data.status, d.data.id, d.data.url);
                 delColumn();
             }else{
                 loadingPop("添加失败");

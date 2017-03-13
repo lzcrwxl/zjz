@@ -2,12 +2,13 @@
  * Created by NHY on 2016/11/24.
  */
 var HtmlHeaderCount=0;
-function HtmlHeader(title,icon,status,id,tempalte_id){
+function HtmlHeader(title,icon,status,id,tempalte_id,url){
     this.title=title;
     this.icon=icon;
     this.status=status;
     this.template_id=tempalte_id;
     this.id=id;
+    this.url=url;
     var d=this.bindData();
     this.dom=$('<li index="'+this.id+'" data='+d+' show='+this.status+'></li>');
     this.init();

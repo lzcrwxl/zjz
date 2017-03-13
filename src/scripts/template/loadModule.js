@@ -9,7 +9,6 @@ $(function(){
         dataType:'json',
         success:function(data){
             console.log(data);
-            console.log(_page_conf);
             if( window.top!==window.self){
                 $("#loaded-modules",window.parent.document).empty();
                 $(".right-content2-content",window.parent.document).find("tbody").empty();

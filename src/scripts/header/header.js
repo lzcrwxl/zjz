@@ -1,14 +1,15 @@
 /**
  * Created by NHY on 2016/11/19.
  */
-function Header(title,icon,open,id){
+function Header(title,icon,open,id,url){
     this.template_id=id;
     this.id=Date.now();
+    this.url=url;
     this.title=title;
     this.icon=icon;
     this.status=open;
     this.system=0;
-    this.htmlHeader=new HtmlHeader(this.title,this.icon,this.status,this.id,this.template_id);
+    this.htmlHeader=new HtmlHeader(this.title,this.icon,this.status,this.id,this.template_id,this.url);
     this.dom=$("<tr index='"+this.id+"'></tr>");
     this.init();
 }
@@ -42,6 +43,10 @@ Header.prototype={
         var father=$(".right-content2-content").find("tbody");
         //栏目开启
         var that=this;
+        this.dom.on("click",".column-title",function(){
+            $("#iframe").attr("src",that.url);
+            $("#content-middle-top").find("input").val(that.url);
+        });
         this.dom.on("click",".column-item1",function(){
             var par=$(this).parents("tr").clone(true);
             var ch=par.find(".column-item1");

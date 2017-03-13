@@ -9,13 +9,21 @@
             init: function () {
                 var me = this;
                 me.parent=$(".content-left-list");
+                me.navBar="#moduleID00";
                 me.imageText ="#moduleID01";
                 me.imageList="#moduleID02";
+                me.textList="#moduleID03";
                 me.rollNotice='#moduleID04';
                 me.imagePlay="#moduleID05";
                 me.panelList = $("#iframe").contents().find('body')[0];
 
 
+                // 为魔方导航拖拽源监听dragstart,设置关联数据
+                me.parent.on("dragstart",me.navBar,function(e){
+                    var event=e.originalEvent;
+                    event.dataTransfer.setData('text/plain', 'navBar');
+                    event.stopPropagation();
+                });
                 // 为图文展示拖拽源监听dragstart,设置关联数据
                 me.parent.on("dragstart",me.imageText,function(e){
                     var event=e.originalEvent;
@@ -38,6 +46,12 @@
                 me.parent.on('dragstart',me.rollNotice,function(e){
                     var event= e.originalEvent;
                     event.dataTransfer.setData('text/plain','rollNotice');
+                    event.stopPropagation();
+                });
+                // 为图文展示拖拽源监听dragstart,设置关联数据
+                me.parent.on("dragstart",me.textList,function(e){
+                    var event=e.originalEvent;
+                    event.dataTransfer.setData('text/plain', 'textList');
                     event.stopPropagation();
                 });
 
@@ -70,11 +84,17 @@
             onDrop: function (e) {
                 var id = e.dataTransfer.getData('text/plain');
                 switch (id){
+                    case "navBar":
+                        $("#moduleID00").click();
+                        break;
                     case "imageText":
                         $("#moduleID01").click();
                         break;
                     case "imageList":
                         $("#moduleID02").click();
+                        break;
+                    case "textList":
+                        $("#moduleID03").click();
                         break;
                     case "imagePlay":
                         $("#moduleID05").click();

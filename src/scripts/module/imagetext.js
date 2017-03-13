@@ -91,7 +91,6 @@
     };
 })(window);
 (function(){
-    $("#iframe").load(function() {
         $(".content-left-list").on("click", "#moduleID01", function () {
             var html=template('imagetexttemplate');
             $("body").append(html);
@@ -118,6 +117,7 @@
             var text = $("#imageTextText" + index).val();
             var url = $("#imageTextUrl" + index).val();
             var id="imgTextFile"+index;
+
 
             if ($("#imgTextFile" + index).length) {
                 $.ajaxFileUpload({
@@ -153,7 +153,7 @@
                 data.intro=text;
                 data.template_id=index;
                 data.url=url;
-                module_id4(data).bindTemplate();
+                module_id2(data).bindTemplate();
                 $('#imageTextNav').val("");
                 $("#imageTextText" + index).val("");
                 $("#imageTextUrl" + index).val("http://");
@@ -162,5 +162,4 @@
                 $("#bg").hide();
             }
         });
-    });
 })();
